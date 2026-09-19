@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Shadher Body🌼</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2ECD9;
+    --surface: #FFFFFF;
+    --surface-soft: #EAE2C9;
+    --ink: #26200F;
+    --ink-soft: #6E6247;
+    --green: #204F3D;
+    --green-soft: #DDE7D9;
+    --gold: #B8790E;
+    --gold-soft: #F2E1B6;
+    --brick: #9B3E27;
+    --brick-soft: #F1DDD2;
+    --line: rgba(38,32,15,0.14);
+    --shadow: 0 1px 2px rgba(38,32,15,0.06);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #16211A;
+      --surface: #1E2C22;
+      --surface-soft: #24352A;
+      --ink: #EFE8D6;
+      --ink-soft: #A79E88;
+      --green: #6FBC98;
+      --green-soft: #26392E;
+      --gold: #E3A63A;
+      --gold-soft: #3A3120;
+      --brick: #E08064;
+      --brick-soft: #3B2620;
+      --line: rgba(239,232,214,0.14);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16211A;
+    --surface: #1E2C22;
+    --surface-soft: #24352A;
+    --ink: #EFE8D6;
+    --ink-soft: #A79E88;
+    --green: #6FBC98;
+    --green-soft: #26392E;
+    --gold: #E3A63A;
+    --gold-soft: #3A3120;
+    --brick: #E08064;
+    --brick-soft: #3B2620;
+    --line: rgba(239,232,214,0.14);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 48px;
+  }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 18px 16px 8px; }
+
+  /* ---- Header ---- */
+  header { display:flex; align-items:baseline; justify-content: space-between; margin-bottom: 18px; }
+  .brand { font-family:'Fraunces', serif; font-weight:600; font-size: 1.5rem; letter-spacing: -0.01em; }
+  .brand small { display:block; font-family:'Inter',sans-serif; font-weight:500; font-size:0.72rem; color: var(--ink-soft); margin-top:2px; }
+  .icon-btn {
+    width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line);
+    background: var(--surface); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; color: var(--ink); flex-shrink:0;
+  }
+  .icon-btn:active { transform: scale(0.94); }
+
+  /* ---- Date nav ---- */
+  .datenav {
+    display:flex; align-items:center; justify-content:space-between;
+    background: var(--surface); border:1px solid var(--line); border-radius: 14px;
+    padding: 8px 10px; margin-bottom: 16px; box-shadow: var(--shadow);
+  }
+  .datenav button { background:none; border:none; color:var(--ink); width:34px; height:34px; border-radius:10px; cursor:pointer; font-size:1.1rem; }
+  .datenav button:active { background: var(--surface-soft); }
+  .datenav .label { font-weight:600; font-size:0.94rem; text-align:center; flex:1; }
+  .datenav .label small { display:block; font-weight:400; color:var(--ink-soft); font-size:0.72rem; margin-top:1px; }
+
+  /* ---- Summary card ---- */
+  .summary {
+    background: var(--surface); border:1px solid var(--line); border-radius: 20px;
+    padding: 20px 18px 18px; margin-bottom: 16px; box-shadow: var(--shadow);
+  }
+  .ring-row { display:flex; align-items:center; gap: 18px; }
+  .ring { position:relative; width: 108px; height:108px; flex-shrink:0; }
+  .ring svg { width:100%; height:100%; transform: rotate(-90deg); }
+  .ring-num { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .ring-num .n { font-family:'Fraunces',serif; font-weight:600; font-size:1.5rem; line-height:1; }
+  .ring-num .u { font-size:0.62rem; color:var(--ink-soft); margin-top:3px; }
+  .ring-side { flex:1; min-width:0; }
+  .ring-side .goal-line { font-size:0.82rem; color: var(--ink-soft); margin-bottom:4px; }
+  .ring-side .goal-line b { color: var(--ink); font-weight:600; }
+  .remaining { font-family:'Fraunces', serif; font-size:1.05rem; font-weight:600; }
+  .remaining.over { color: var(--brick); }
+
+  .mode-toggle { display:flex; gap:8px; margin-bottom:18px; }
+  .mode-chip {
+    flex:1; padding:9px; border-radius:12px; border:1px solid var(--line); background: var(--surface-soft);
+    color: var(--ink-soft); font-size:0.85rem; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif;
+    text-align:center;
+  }
+  .mode-chip.active { background: var(--green); border-color: var(--green); color:#fff; }
+
+  .macros { margin-top: 18px; display:flex; flex-direction:column; gap: 11px; }
+  .macro-row { display:flex; align-items:center; gap:10px; }
+  .macro-label { width: 58px; flex-shrink:0; font-size:0.78rem; font-weight:600; color: var(--ink-soft); }
+  .macro-track { flex:1; height:7px; border-radius:4px; background: var(--surface-soft); overflow:hidden; }
+  .macro-fill { height:100%; border-radius:4px; }
+  .macro-fill.protein { background: var(--gold); }
+  .macro-fill.carbs { background: var(--green); }
+  .macro-fill.fat { background: var(--brick); }
+  .macro-fill.fiber { background: var(--ink-soft); }
+  .macro-fill.steps { background: var(--green); }
+  .macro-val { width:76px; flex-shrink:0; text-align:right; font-size:0.78rem; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .macro-val span { color: var(--ink-soft); }
+
+  /* ---- Add section ---- */
+  .section-title { font-size:0.98rem; font-weight:600; margin: 22px 0 10px; display:flex; align-items:center; justify-content:space-between; }
+  .search-box {
+    display:flex; align-items:center; gap:8px; background: var(--surface); border:1px solid var(--line);
+    border-radius: 14px; padding: 10px 12px; margin-bottom: 10px; box-shadow: var(--shadow);
+  }
+  .search-box input {
+    border:none; outline:none; background:none; color:var(--ink); font-size:0.95rem; width:100%;
+    font-family:'Inter',sans-serif;
+  }
+  .search-box input::placeholder { color: var(--ink-soft); }
+  .search-box svg { flex-shrink:0; color: var(--ink-soft); }
+
+  .food-list { display:flex; flex-direction:column; gap:8px; max-height: 340px; overflow-y:auto; }
+  .food-item {
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    background: var(--surface); border:1px solid var(--line); border-radius: 14px;
+    padding: 11px 12px; cursor:pointer;
+  }
+  .food-item:active { background: var(--surface-soft); }
+  .food-item .fi-name { font-weight:600; font-size:0.92rem; }
+  .food-item .fi-sub { font-size:0.76rem; color: var(--ink-soft); margin-top:2px; }
+  .food-item .fi-cal { font-family:'Fraunces',serif; font-weight:600; font-size:0.98rem; flex-shrink:0; text-align:right; }
+  .food-item .fi-cal small { display:block; font-family:'Inter',sans-serif; font-weight:400; font-size:0.68rem; color: var(--ink-soft); }
+  .empty-note { font-size:0.85rem; color: var(--ink-soft); padding: 14px 4px; text-align:center; }
+
+  .custom-add-btn {
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    width:100%; padding: 11px; margin-top: 4px; border-radius: 14px;
+    background: var(--surface-soft); border: 1px dashed var(--line); color: var(--ink-soft);
+    font-size:0.85rem; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif;
+  }
+
+  /* ---- Log list ---- */
+  .log-item {
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    background: var(--surface); border:1px solid var(--line); border-radius: 14px;
+    padding: 11px 12px; margin-bottom: 8px;
+  }
+  .log-main { min-width:0; }
+  .log-main .ln { font-weight:600; font-size:0.92rem; }
+  .log-main .ls { font-size:0.76rem; color: var(--ink-soft); margin-top:2px; }
+  .log-right { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+  .log-cal { font-family:'Fraunces',serif; font-weight:600; font-size:0.96rem; text-align:right; }
+  .del-btn { width:30px; height:30px; border-radius:50%; border:none; background:none; color: var(--ink-soft); cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .del-btn:active { background: var(--brick-soft); color: var(--brick); }
+
+  /* ---- Modal / sheet ---- */
+  .overlay {
+    position: fixed; inset:0; background: rgba(20,16,8,0.45); display:none;
+    align-items:flex-end; justify-content:center; z-index: 50;
+  }
+  .overlay.show { display:flex; }
+  .sheet {
+    background: var(--bg); width:100%; max-width:520px; border-radius: 22px 22px 0 0;
+    padding: 18px 18px calc(22px + env(safe-area-inset-bottom)); max-height: 88vh; overflow-y:auto;
+    animation: slideup 0.22s ease-out;
+  }
+  @keyframes slideup { from { transform: translateY(24px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+  .sheet-handle { width:36px; height:4px; background: var(--line); border-radius:3px; margin: 0 auto 14px; }
+  .sheet h3 { font-family:'Fraunces',serif; font-weight:600; font-size:1.2rem; margin: 0 0 4px; }
+  .sheet .sheet-sub { font-size:0.82rem; color: var(--ink-soft); margin-bottom: 16px; }
+
+  .field { margin-bottom: 14px; }
+  .field label { display:block; font-size:0.78rem; font-weight:600; color: var(--ink-soft); margin-bottom:6px; }
+  .field input, .field select {
+    width:100%; padding: 11px 12px; border-radius: 12px; border:1px solid var(--line);
+    background: var(--surface); color: var(--ink); font-size:0.95rem; font-family:'Inter',sans-serif;
+  }
+  .field input:focus, .field select:focus { outline: 2px solid var(--green); outline-offset:1px; }
+  .row2 { display:flex; gap:10px; }
+  .row2 > .field { flex:1; }
+
+  .qty-chips { display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 14px; }
+  .qty-chip {
+    padding: 8px 14px; border-radius: 999px; border:1px solid var(--line); background: var(--surface);
+    font-size:0.85rem; font-weight:600; cursor:pointer; color: var(--ink);
+  }
+  .qty-chip.active { background: var(--green); border-color: var(--green); color: #fff; }
+
+  .preview-box {
+    background: var(--surface-soft); border-radius: 14px; padding: 12px 14px; margin-bottom: 16px;
+    display:flex; justify-content:space-between; font-size:0.82rem;
+  }
+  .preview-box div { text-align:center; }
+  .preview-box b { display:block; font-family:'Fraunces',serif; font-size:1.05rem; font-weight:600; }
+  .preview-box span { color: var(--ink-soft); font-size:0.7rem; }
+
+  .btn {
+    width:100%; padding: 13px; border-radius: 14px; border:none; font-size:0.95rem; font-weight:600;
+    cursor:pointer; font-family:'Inter',sans-serif;
+  }
+  .btn-primary { background: var(--green); color:#fff; }
+  .btn-primary:active { opacity:0.85; }
+  .btn-ghost { background:none; color: var(--ink-soft); margin-top:8px; }
+
+  .goal-fields { display:flex; flex-direction:column; gap:12px; }
+
+  .toast {
+    position: fixed; bottom: 20px; left:50%; transform: translateX(-50%);
+    background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px;
+    font-size:0.85rem; z-index: 60; box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    opacity:0; pointer-events:none; transition: opacity 0.2s, transform 0.2s;
+  }
+  .toast.show { opacity:1; transform: translateX(-50%) translateY(-6px); }
+
+  .banner {
+    background: var(--gold-soft); border:1px solid var(--line); border-radius: 14px;
+    padding: 12px 14px; font-size: 0.82rem; margin-bottom: 16px; display:none; color: var(--ink);
+  }
+  .banner.show { display:block; }
+
+  ::-webkit-scrollbar { width:0; height:0; }
+
+  .app-footer {
+    text-align:center; font-size:0.76rem; color: var(--ink-soft);
+    margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--line);
+  }
+  .credit-tag {
+    position: fixed; top: max(10px, env(safe-area-inset-top)); left: 14px;
+    font-size: 0.7rem; color: var(--ink-soft); background: var(--surface);
+    border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
+    z-index: 40; box-shadow: var(--shadow);
+  }
+
+  /* ---- Bottom tab bar / views ---- */
+  body { padding-bottom: 84px; }
+  .view { display:none; }
+  .view.active { display:block; }
+  .tabbar {
+    position: fixed; left:0; right:0; bottom:0; z-index:45;
+    display:flex; background: var(--surface); border-top:1px solid var(--line);
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+  }
+  .tab-btn {
+    flex:1; display:flex; flex-direction:column; align-items:center; gap:2px;
+    background:none; border:none; padding:6px 2px; color: var(--ink-soft);
+    font-size:0.66rem; font-weight:600; font-family:'Inter',sans-serif; cursor:pointer;
+  }
+  .tab-btn .ic { font-size:1.2rem; line-height:1; }
+  .tab-btn.active { color: var(--green); }
+
+  /* ---- Toggle switch ---- */
+  .toggle-switch {
+    width:44px; height:26px; border-radius:999px; background: var(--surface-soft);
+    border:1px solid var(--line); position:relative; cursor:pointer; flex-shrink:0; padding:0;
+  }
+  .toggle-switch .knob {
+    position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%;
+    background: var(--ink-soft); transition: transform .15s, background .15s;
+  }
+  .toggle-switch.on { background: var(--green); border-color: var(--green); }
+  .toggle-switch.on .knob { transform: translateX(18px); background:#fff; }
+  .live-row {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top:10px; font-size:0.82rem; color: var(--ink-soft);
+  }
+  .live-row .live-note { font-size:0.7rem; margin-top:2px; }
+
+  /* ---- Prayer list ---- */
+  .prayer-item {
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    background: var(--surface); border:1px solid var(--line); border-radius: 14px;
+    padding: 12px 14px; margin-bottom: 8px;
+  }
+  .prayer-name { font-weight:600; font-size:0.94rem; }
+  .prayer-time { font-size:0.78rem; color: var(--ink-soft); margin-top:2px; }
+  .prayer-actions { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+  .bell-btn, .tick-circle {
+    width:34px; height:34px; border-radius:50%; border:1px solid var(--line);
+    background: var(--surface-soft); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:1rem; color: var(--ink-soft);
+  }
+  .bell-btn.on { background: var(--gold-soft); border-color: var(--gold); color: var(--gold); }
+  .tick-circle.on { background: var(--green); border-color: var(--green); color:#fff; }
+
+  .list-item {
+    background: var(--surface); border:1px solid var(--line); border-radius: 14px;
+    padding: 11px 12px; margin-bottom: 8px;
+  }
+  .list-item-top { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .list-item-name { font-weight:600; font-size:0.92rem; }
+  .list-item-sub { font-size:0.76rem; color: var(--ink-soft); margin-top:2px; }
+  .group-label { font-size:0.78rem; font-weight:700; color: var(--ink-soft); margin: 16px 0 8px; text-transform:uppercase; letter-spacing:0.03em; }
+  .group-label:first-child { margin-top:4px; }
+</style>
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIlNoYWRoZXIgQm9kefCfjLwiLCAic2hvcnRfbmFtZSI6ICJTaGFkaGVyIEJvZHnwn4y8IiwgImRlc2NyaXB0aW9uIjogIkRhaWx5IGZvb2QgJiBtYWNybyB0cmFja2VyIGZvciBCYW5nbGFkZXNoaSBtZWFscyIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAic3RhcnRfdXJsIjogIi4iLCAiYmFja2dyb3VuZF9jb2xvciI6ICIjRjJFQ0Q5IiwgInRoZW1lX2NvbG9yIjogIiMyMDRGM0QiLCAiaWNvbnMiOiBbeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFMUUFBQUMwQ0FJQUFBQ3lyNUZsQUFBR29FbEVRVlI0bk8yZE1ZN2ROaENHeDBGdTRBdjRCT20yTVpEZVZReWsyUVBFaFh1Zlkvc1U5Z0hTYkxGVlRyQ05POThqZDBoQldCRDBOQlNweDVuNWgvby91TERYQzVFaVA4Mk1LTDNITis4Ky9pNkU3UEZMZEFjSUxwU0RxRkFPb2tJNWlBcmxJQ3FVZzZoUURxSkNPWWdLNVNBcWxJT29VQTZpUWptSUN1VWdLcFNEcUZBT29rSTVpQXJsSUNxVWc2aFFEcUpDT1lnSzVTQXFsSU9vVUE2aVFqbUlDdVVnS3BTRHFGQU9vdkpyZEFkaStQSHRhOWZ2Ly9iWEo2T2VJUFBtSWgrazdyV2h6a1ZjbVZtT3NVSm9UQ3pLaEhMNE9ISExmSmJNSTBlVUU3ZE1ZOGtNY3VCb3NXWUNSUkxMZ2VuRUxYa3R5YnJPa2NVTVNkWFZEZmtpeDZpeGZuMTZhUC9sOTErKzM5OWl1aENTU1k0N3RlaXlvYzQ5cmlSU0pJMGM1OHlvQ05FMXdhT09VOGppUndJNVRtaXhPNWREVXNQQTQrTXJnaTVIcnhtYmFSc29oRVdMNEg1QXk5RmxocjhXUTFwSDlnTlVqdE5hT0R0eHk3bk9ZQ3FDS0VlN0dWQmFyRG5STVVBLzRPUm9OQU5XaXpXOW5VVHpBMHVPWGpOZ3RWalQxVnNvUDRDV3o2YzBRMWI5YkZtRmcxcHJSNGtjTFlPU1Rvc043ZjBIaVI4UWtlTUtaa2hQQ0FHSkgvRnlYTVNNUWk0L2d0Tkt1eG5adGRqUWVGS3grU1UrY3RTWjBnejVlVVlESHhSYkVDbkhZZGlZMVl4Q2l4K3h5U1ZNam91YlVRRDNJMFlPbXJHQTdBZGl6WEVkTXdxdzlVZUFIUFhyNEdwbUZBNzlDQWtlM25LMG1IRmxvUHhBVEN0WEN4c0Z3TE4ybFlNSnBRNWFja0dKSERTakFGV2Mrc2xSc1I1a0xLRFF4c1F6ZURqSjBYSktEQnVGdzNGdzh5UCthNTlpRThvL2YvNVIrZC9INXhlM25xeDUvK1g3NjlQRDY5TkQ3QVVUTDRjL2RTRzAzNHdTSlJDUFIvYUgxWWJQOWRIdVJCMDNTK3FENC9BMC94S1JZNVFXNjZOZElaQ1lGNlRoWVdPc0dkYUhYVk8vclhVb1MyZU9ITmJ6TjMwSUNWc0VzdzRiRGxlMlEwT3hhMksyY2tTOWlPQm1Sa2h6QzliREd4TTVUQytGa0tteWJqUWtlRVErVzdISUtWRVhzVjNUZ2V0Z2huTDQ1NVJBTTZJNllEcklBWkhEcUJRTk42TmcwWTJvc25TU1cxbFBNejU4ZnJ2OC9kKy8vOXZ0ekJ6M3R5anZjMlJoYmNidFB5ZkRTZzdQZ3NNdGJPeXFzUHREejBobU45VGVrV040d1FGU2F0d3l0bU1oWlFmVENsSEpMWWQyZFg3NC9IYjVNN0M1M2ZKejk0Y0YyS2pXU0c0NWRqR3RHVGNxVk15WUFKTmIyY0RQL21vMTQ4QlpCQlRpeDdldkZ1Lyt1RWFPc2RWb2lxQTlzSlArTmVtRWFZV01nbklRbGRuazZMMmhJQld5eWxISjVXZzNGQ2xxbzEwbWVmQzJJVnlJT2NnYU9ZZ0RsSU9vVUE2aVFqbUlDdVVnS3BTRHFGQU9va0k1aUVwV09SSzkzcDJvcXh0TTVORGVMWUQ2cXJ4MFZGNTRNUG9pbDZ5Umd6aEFPWWhLWWpsUzVQSVVuZFJJTEFleHhrb08xcVJqOGE5R0pmdjdISS9QTDhOZnBUbjhuSFE3cVhPS01LMXN1TlRucEE5Skw4ZkFxN1A5YzlJdFpBOGJZaXFIVzlrQk9BMWp1eFJTY01nRWtZUFlFU2tIV3ZBWTliRUdpN0FSZ3EwYzljd3lGZ3Mvd3MxWThNOHBrdjFXZHNPUU85dDdibDhCcTU5N0NFc3JScXRoZ2ROajBYVHNUa1htY2poc0M3SWh4QS8vUmgwR052NGJqQzBLTHVlcE1tb3VmTWRNRHpuOGc0YzQraEVTcUh5R05IaWR3L1E1M09Qemkrbk1tUjQvUEd4SXVCd09HTTNmWkRjbXUzaHNBRmlZWmo4dkJ5M0N0LzRyK01raHVoOUxXa0hlSnRKNVUwZ0pXdmhhQTdFSVZ2YllkV3R1UGMyWW13NUxkTFZSY0kwY0FwQmN3QUZKS0FXZ2dwUnZFS0pkSHQ1eXRMaC9UVDhPejlwL3VTZ2djbFJPRXVlaWlRSWtvUlNBMGtyaG1za0ZMYUVVWXVTb1h3ZFg4K1BRakpDd0lZR1JnMzRVWU0yUTJMUkNQNURORU1DYVk4M2NmbURXR1d1QzVUaThNbWIxbzhXTTJMQWgvaXVrdXh4dTN1UDg4TVdVeG5NSk4wUENJMGVoTVg1SS9oQ1N5QXdCa1VPdTRVY3VNd1FrclN5MGJBNlhNY1cwOXhuSERNR0pISVdXb1VrWFFwS2FJV2lSbzlBVlB3UTRoSFIxRXMwTXdaUkRtamNmaFZXa3QyT0FaZ2lzSElXTWlzeWhSUUZhRHVuWnYzaFRnamhiY3E1MVpETUVYdzdwM04vYVg1SFRMWUtiSVNua0tOeWpTR0dnS0hjZUgxK0xRaG81cE5PUFF1VjJ0OHVWVWNlUlBHWklMamtLSnhRcERGd1hPUmVFRW1sUnlDZEg0YlFpQzEydTNKbVMwbWxSeUNxSGpQRERoNlJtU0dvNUZqQXR5ZXZFd2d4eUZIQVVtVUNMd2p4eUxFUlpNbzBUQ3hQS3NlQmp5WHhPTE13c3g1cXhva3dzeEpxcnlMR2gxNVdMMkxEaG9uS1FGckRlQkNOUVVBNmlRam1JQ3VVZ0twU0RxRkFPb2tJNWlBcmxJQ3FVZzZoUURxSkNPWWdLNVNBcWxJT29VQTZpUWptSUN1VWdLcFNEcUZBT29rSTVpQXJsSUNxVWc2aFFEcUpDT1lnSzVTQXFsSU9vVUE2aVFqbUl5ditCSmlvSy84TWRIQUFBQUFCSlJVNUVya0pnZ2c9PSIsICJzaXplcyI6ICIxODB4MTgwIiwgInR5cGUiOiAiaW1hZ2UvcG5nIn0sIHsic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBZ0FBQUFJQUNBSUFBQUI3R2tPdEFBQVZlVWxFUVZSNG5PM2RQWkpyUlpySFlkSEJEbm9EckFBUDUwYmd0d1VST0N3QURIeldnWThCQzhEQndPb1Y0T0N4ajk3REdNVVVSWldra283eTQ4MzhQMCtNeGN6YzBEMGY3eS96SEZYZGp6NzU4dk1UQUhuK05mc0RBRENIQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJUVNBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBZ2xBQUNoQkFBZ2xBQUFoQklBZ0ZBQ0FCQktBQUJDQ1FCQUtBRUFDQ1VBQUtFRUFDQ1VBQUNFRWdDQVVBSUFFRW9BQUVJSkFFQW9BUUFJSlFBQW9RUUFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvVDZlL1FHZ2l6OS8vcW5obi9icE45ODIvTk9naUk4KytmTHoyWjhCam1nNzRoOGhEeXhLQUZoRG5YRi9DMGxnQ1FKQVJXdU4rMXRJQWdVSkFGWHNOL1F2RVFPS0VBQm15aG42bDRnQkV3a0FveG42bDRnQmd3a0FJeGo2OXhJREJoQUFPakwzSDZjRTlDTUF0R2Z1OTZBRU5DY0FOR1B1ajZFRXRDSUFOR0QwanljRFBFNEFPTTdjcjBBSk9Fd0FPTUxvcjBZR09FQUF1SU81WDU4U2NEc0I0Q1pHLzFwa2dGc0lBTzh3K3RjbEExd25BRnhrOU85QkJyaEVBRGpENk4rUERQQ1dBUEFQUnYvZVpJQ1hCSUMvR1AwNVpJQW5Bc0Myby8vM0h6NXI4dWQ4K1A2UEpuOU9OVEtBQUVUYllQUzNtdkxIYk5BR0dVZ21BTG1XbS81elovM3RscXVDQnNRU2dFU3JqUDVWSnY1MXEvUkFCZ0lKUUpiNm8zK1BvWDlKL1JqSVFCUUJDRkoyK3U4OTlDOHBHd01OeUNFQUVXcU8vc3k1LzFiTkVzaEFBZ0hZWE1IUlAyenV0eHFzeTMzZ2htUmdid0t3czFMVHY5TVluVHMwdC94THZhSUJHeE9BUGRVWi9XMUhaS25KZU5hdWYxOFoySklBYktqQzlQZFR1RTkyT2c0YXNCOEIyTTMwNmYvNHlLc3c3SHJZNE1ob3dHWUVZQjl6Ui8rRDAyMzZhQnRzNmNNbEE5c1FnRTFNblA2UHpMSzB1Zi9Xb2tkUEEvWWdBRHVZTmYwUER5OXovNjNsRHFZR2JFQUExcmJXNkRmM2I3SFdzWldCcFFuQXdxWk0vd1BqeWR3L1pwVkRyUUhyRW9CVmpaLys5ODRqYzcrVitrZGVBeFlsQU9zeCtqUFZQd3N5c0J3QldNemc2VjkvNktRcGZrWTBZQzBDc0pLUjAvK3VRV1B1ajFmMkJHbkFRZ1JnR1RXbnY5RS9WODB6cFFHckVJQTFESnYrTlFjSzF4VThheHF3QkFGWXdKanBYM0NJY0pkcVoxQUQ2aE9BMHFvdC9JMysrcXFkU2htb1RBRHFLclh3Ti9yWFV1cTBha0JaLzVyOUFUalA5T2NSTjU2eU1mL2E1ZlJmVWM0bGRnQVZEYmhoalA0UWRVNjBmVUJCQWxCT2tlbHY5TytreUJuWGdHbzhBcXJGOUtlSFcwN29nTWRCbmdWVll3ZFFTTy9idytpbndqVmdIMUNISFVBVnBqOERWTmdLMkFmVVlRZFF3dlRwYi9Tbm1YNUoyQWRVSUFEemRaMytGdjVjTXYzYTBJRHBCR0N5dWRQZjZHZnVSYUlCYzNrSE1KUHB6M1R2WGdaZFh3bDRIekNYQUV4aitsT0VCc1Q2ZVBZSG9ER2pud09lcm9vckY4L1QvOHJGc3hrN2dEazZyWHBNZng0eGF5dGdFekNMQUV4ZytsT1dCa1R4TGFEUnBreC9vNTk3VGJtaWZDbG9NRHVBb1V4L1ZuSDlzckVQMklNQWpHUDZzeFlOMko0QURHTDZzeUlOMkpzQUxNejBaNEFwRFdBTUFSaWh4NHJHOUdlWThRMndDUmhEQUxvei9kbUFCbXpKMTBEN0dqejlqWDU2RzN6NStXSm9WM1lBaXpIOW1ldktaZVo5d0hJRW9LUG15My9UbndwR05zQ0RvSzRFb0JmVG40MXB3QjRFb0F2VG4rMXB3QVlFWUFHbVB6VjVIN0E2QVdpdjdXckZqY1NpMmw2Nk5nRTlDRUJqSXk5VHkzK21HM2tSYWtCekF0Q1NSLzhFOGpKZ1hRSlFsK25QS3J3TVdKUUFORFBzMGIvcFQwSERHbUFUMEpBQXRHSDZnd1lzUndCV1l2cFRuRXQwTFFMUXdKamx2MXVMSlZ5NlVHMENDaEtBV3J3eFkyTXU3Mm9FNEZFTlZ5SWUvYk9ITVM4RGJBSWVKd0FQR1hNSm12NHNaOHhGcXdFUEVvQXFQUHBuTTJOZUJ2QUlBVGh1ek1NZjJJOEhRVVVJd0h3ZS9iTXJQeUZjbkFBY05HRGRZZnF6Z1FHWHNVM0FZUUp3eElDSFA2WS8yeGp3TWtBRGpoR0FtZXlDQ2VjV21Fc0E3dWJoRDl6TGc2Q2FCR0FhRDMrSTRsdWhCUW5BZlZxdE1sejA4S3pWN1dBVGNDOEJxTVh5bjQyNXZLc1JnRHYwWHY2N1BkaGU3d2RCTmdGM0VRQ0FVQUp3Szh0L2FNSW1vSTZQWjMrQUxLYi9GTDk4OWNXQi82K3ZmLzJ0K1NmaHlZZnYvemg3TC96K3cyZnVoWkVFNENiV0ZLczROdXR2LzZOVVlRbC8vdnpUcDk5OE8vdFRMT0NqVDc3OGZQWm5XRUNUQUZqK2Q5Snc2TjlGREI3VTlZNFFnRnZZQWJ6UDhyK2dXVVAvMG1jUWcycHNBbTVoQi9BK3kvODZLc3o5NjVUZ0xqWUJjL2tXMER1Nkx2OU4vOXY5OHRVWDlhZi9hWjNQV1VUWFc4RGUvVjBlQVkzZ0Z6OGN0dWd3ZmY3WU5nVEgrRHJRR0hZQTExaitUN1RIVW5xUHYwVlhOZ0VUMlFGMFovbC9yLzBtNXRQZnlHN2dMallCQXdqQUhLN3NzL1liL1MvSndDV1hmaTZNM2p3Q3VxanJsMzk0SmVkUlNjN2Y5SEZOYmg5UGdhNndBNWpBOHYrbHpHbG9OL0NLVGNBVWRnRG5XZjZQa1RuOW40WC85VzloRTlDVkhjQm9sdjlQekw0bnRnTFBiQUxHc3dQb3hhVjhoZW4vaWdOeWhWdXBId0U0bzkrRzBmTGZLOUJMSEpsVHp4dkVVNkN6QktBTGE1YXpETGgzT1VSbnVhRTZFWURYckJRNk1kcHU1RUIxNHRaK3kwdmdjV0tmLzVobzkwcCtNK3hWOEVoMkFPMjVmRjh5L1E5ejZGNXlXL1VnQVAvZzlXOWJSdGlETWcrZ1Y4SERDRUJqMWluUE1vZFhjdzdqTXpkWGN3SXdRdUR5MzlocUtQQmdCdDR5VXdqQTMyd1BXd2tjV0wwNXBLMjR6VjhTZ0pac1VVOUdWVGNPN01rdDFwb0FkQmUxbVRXa3VvbzZ2RkUzeml3QzhCY2J3OGRGamFkWkhPVEh1ZG1mQ1VBejRadFRnMm1ZOEVNZGZxTzFKUUI5aFd4ancwZlNlQ0VIUE9UMm1VZ0FlRlRJTUtyR1llZHhBbkE2dFhnbUdMc3ROWVltaWozNGo5OXVYZ004RVlDT2JHRGhRVzZpcmdTQTQySlhvSFU0QlR4Q0FCcklmUDVqOUJTUmVTSXliN3JtQktEWDA4Qzl0NjZaUStkeC8vbnUzeS8vcDlVZnUvZnA2SFFyZVExdzhnL0N3QmhueC8zVGYvenZqLzhiL25IZ2RMSURlRnpnVm5UdjlXWno3eTcybSt3R0FrOUs0SzNYbkFCMHNmSHpuOEJCODRqYko3c0dYTEh4RFRWWGVnQThCNFJZYnYvMEFIQ1hqZGVZUGR5N3FMY0pZREFCZUlpbmtEQ1JHL0JCQXREZXJzOHJyUzd2Y213NWJ4Tnd5YTYzMVZ6UkFmQUU4SGE3anBVdE9WbTNDeDhDMFFFQVNDWUF4K1U4ZjdTaVhFN09LY3U1RFhzUWdNWThxWVJPM0Z6TkNRRHZ5RmxMYnNhSjQxMENBRjBjK3cwL2ZpOFFJK1VHSVB6dC80MnNJcGZtOU4waWVSVGtCdUJCWGozeHJudVg4NWIveDdnWkQvUHJvRnZhN0NWVncvWGoyNTl2TXV6RytPV3JMNzcrOWJmWm42S1pEOS8vWWR3M1pBZEFYNWQrMTNIYmZ4R2xyTnM3cDRpTVp3ZEFMN2ZNOTRSL0VlWHBiM2ZsYU96OTE2Y3lPd0RPZS9ENXoxMnIrNUN0d050QmYvWS9OdWRWTUplRTdnQ1MzL3N6a2NWK1RYLysvTk9uMzN3NysxTk1ZQWRBZXdkVzlBbWJBS2hHQUk0NCt6MkVuYjRDNUtIQlpuWTZvV2R2TkY4Tk9rWUFhT3p3V3Q0bUFBWVRBSUJRQXNCck96MHU0Sm5UeWxzQ0FCQktBQUJDQ1FELzhQaURnc05mZGZjZCtkNDhCZUlWQVFBSWxSZ0FQd2JjMjRHMXZPVS9jMldPaGNRQVBHajdud0tENHZ3c1dDc0NRQmQzcmVndC8yRUtBZUJ2YlY4UzN2S3JMc2Y4T2t5ZWVRL01TNkcvRFpSaEx2MDJmSE1mcGhNQVJqRHVvU0NQZ0FCQ0NRQkFLQUVBQ0NVQS9NWDNRMEk0MFR3VEFJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFOenR3L2QvdlAyUHYvL3cyZmhQQXBuTzNtNW5iMHl1U3d6QXA5OThPL3NqQUxWa2pvWEVBQUJ3RWdDZWZmM3JiN00vQWlNNDBUd1RBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBZ2xBRWZzK3JOZ3ZoK3l2UTFPc1o4Q2EwZ0FBRUtGQmlEenAvNkFzMklIUW1nQUFCQUFnRkFDd0Q5czhKS1FTNXhjWGhHQWxqYjRJaEJVNWhaclN3QU84clV6S01MTmVGaHVBR0xmKzcvTGc0SXRPYTJYSkkrQzNBQUFoQk1BZ0ZBQzBOZ2VMNms4THRqTUhpZDBqNXVyRkFFNHpxc25tTTV0K0FnQkFBZ1ZIWURrdC8vdjJ1T2hBU2VuOHFyd0lSQWRnRTQ4cVlUbTNGWTlDTUJEUEgrRWlkeUFEeElBTHZMb1lBTk9JbGVrQnlEOENTQWtjL3VuQjZDVGJaNVhXajh1Ylp2VHQ4ME5WYzNIc3ovQThqNTgvNGVyY3lmLytlN2ZyLzdMZjMvODM1UlB3blZlQUR6T0RvQjNiTE9LZk5kL3Z2djMyK2wvNWI4WGwzUGlPRXdBZWowSHRDMVl5QzBqZnRFTWJLRFRyZVFGd0VrQW10aCtLN3IzV3ZLdXNiNUtBL1krWmFlQW0yNE1BUUFJSlFBZDdmUVVhTmNWNVlFVmZmMU53RTRuYTZlYnFDQUJPSjFhUEExTTJKRHVORlkybG5DYUhyL2R2QUI0SWdEa09yeVdyNzhKZ0ZzSVFGK2JiV0FUVnBkTDIrd0ViWGI3RkNRQXpTUThCWUxwM0dnTkNjQmZQQk84MFdacnpKMDROVGR5c3o4VGdPNzIyOFlhTkFYdGQxTDJ1M0VLRW9DV2JFN1hjdmlYL1BqdFFMTzR4ZG9TZ0wvWkdONXV2L1htMHB5TzI3bk5YeEtBRWJiY3pPNHhkQTZzNWFzdC8vYzRFYTlzZWNzVUpBQ05SVzFSdHh3OWE0azZCVkUzMXhnQzhBLzl0b2RXTkdYZHRhS3Z0dnpmVXIrYnhmT2ZWd1NndmFoMXloNHIwUC8rK0w5M0ovc3QvemVEN1hId2J4UjFXdzBqQU9Qc3VnbllaZ3hkR3ZFRlIvOXBvOFAreXE2M1NVMytTY2pYUHYzbTJ6OS8vbW4ycDFqTTE3Lys5c3RYWDh6K0ZHMFVuUFZ2N1RyOXUvTDg1eTA3Z0M0Q3Q2dEcwakNCaHpyd2hocERBTTd3S3ZpWXdNRTAzdDRIMmV2ZndRU2dsOHcxeTk3amFick13NXQ1SzQwaEFLUHR2UWs0cFE2cEFiWS9zTnZmR2dVSndIbE5Ob3l4SzVmdFI5VjRzWWUweVUzaytjOGxBakJCd2tvbmRtRDFrSEF3RTI2S2dnVGdJcHVBQnlXTXJRR1NENlBsZjI4Q01FZkllaWQ1ZURVUmNnQkRib2VDQktDNzVFM0FLV2FFOVJCKzZNSnZuREVFNEpxdW04ZWNWYy9Ydi80V1BzdnVGWFhFdXQ0SW52OWNKd0FqV011YzR0ZXp0M09nVG02WlVRVGdIVFlCRFJsdDcwbzdSSmIvY3duQUlKZFdOSUVOU0p0eE53bzhNcGN1ZnN2L1lRVGdmZFlSemFWTnVuYzVJTTI1Ylc4aEFPUFlCTHdVdU9BOUsvWTRXUDVYSUFBM3Nacm9KSFAyUFF2LzYvZmpocjJSQUF4bEUvQlc1aEk0ODIvOXpQSy9pSTgrK2ZMejJaOWhHYTMrcFRCWC95WGIvTE5pVnlUUC9TZTlyMy9MLzl2NUp5RXA1R2s0N3BvQm81OXE3QUR1WXhNd3pFNFpNUHFmV2Y2WFlnZFF5KzgvZktZQlQvYllEUmo5THlXLzY2ckpEdUJ1TmdGVHJGVUNjLzhzeS85cWZBdG9HdDhJdXNzcVg1dFo1WE9PWjhWVGtCM0FFYjAzQVNkM3hYdXFiUWdNL2VzR1hPcVcvd2Q0QnpEVGgrLy9zTjQvNXVYQW5SVURRLzl4RmpwejJRRWMxR29UY0xJMWJxcDNEQXo5QXdaYzRaYi94d2pBY1I0RXJlSllGY3o2Smp6OHFVd0FqaHV3Q1RocEFDc2JjMkVMd0dHK0JYUmN3OHZPbENlSzZWK0VBRlRoVzZGc3hzdXQrZ1RnSVdOV0h4ckFjc1pjdEpiL0R4S0FSNDE1RUtRQkxNU2ovMVVJUUMxMngyek01VjJOQURUUWRpWGlaUUJMRy9QbzMvSy9DUUZZaVFaUW5FdDBMUUxReHBoTndNa05SbUhEZnB6RjhyOFZBV2hHQTBobStxOUlBT3JTQUZiaFI5a1hKUUF0TlYrYmFBRDFqWnorbHY5dENVQmpJeTlRRFdDNmtSZWg2ZCtjQUxRMzdHVUFWT2JSZjMwQ3NBQVBncWpKby8vVkNVQVhYZ2F3UFkvK055QUF2V2dBR3pQOTl5QUFIV2tBV3pMOXR5RUFpOUVBNXZMY2Z5ZitTY2p1R3Y3TGtjK3V6M3IzSVQyTXYrb3MvM3V6QStpdXgwVjgvV2F6RmFBNTAzOUxBakNDQnJBMDAzOVhBckF3RFdBQXp4czNKZ0NEZEZyUmFBQmRUWm4rbHYvRENNQTRHc0JhVFAvdENjQlFHc0FxVFA4RXZnWTZRWTh2aHA1dUdQUWUxM0tMV1JlUzZUK2VIY0FFVS9ZQkoxc0JibUQ2UnhHQU9UU0Fna3ovTkIvUC9nQTA5blNMWHJtVG4vNVhIZ2Z4a3VlSG1ld0FwdW02NnJFVjRIWnpwNy9sLzBRQ01KTUdNSjNwbjh5M2dPYnI5S1dnSjdkTWVidjdUTk92RGROL09nRW9vV3NEVHJOWGVSUTAvWkl3L1NzUWdDcW1OK0FrQXhrcVhBbW1meEhlQVZUUis1YTQ1WmIyVm1CN3BqOHYyUUhVMG5zZmNLb3hBaGl2eUhrMy9VdXhBNmhsd08xaEt4REk5T2NzTzRDS2l1d0RUcllDNjZ0em9rMy9nZ1NncUFFTk9GV2FEalJYNnVTYS9qVjVCRlRVbUJ2bXhwdmZFNkhsbVA3Y3dnNmd0REg3Z0ZPeGVjRWpxcDFLMDc4eUFWaEFxY2RCSnhtb3F0b1pOUHJyRTRBMVZOc0tuR1Nna29KbnpmUmZnZ0FzWTFnRFRpVUhDbWZWUEZPbS95b0VZQ1UxRzNDU2dSbktuaURUZnlFQ3NKaVJEVGpkLy8wZkplaXQrQmt4L2RjaUFPc1ozSUJUK2FFVG92NVpNUDJYSXdDcmtvRWM5WSs4MGI4b0FWalkrQWFjRHYxUW1CSWNzOHFoTnYzWEpRQnJtOUtBMDlHZkRWYUNXNngxYkUzL3BRbkFEdGJLd0VrSnpsbnVZQnI5R3hDQVRjeHF3T214M3hTa0JJc2VQZE4vRHdLd2o0a05PRDM4QytQU1NyRDA0VEw5dHlFQXU1bWJnVk9MWHgyNmF3dzJPREpHLzJZRVlFUFRHM0JxOXh1a3A0KzhCKzEwSEV6Ly9RakFuaW8wNEVuYmYwdWd3aHk4YnRlL3IrbS9KUUhZV1owTW5Mcjlxekp6UitTV2Y2bFhqUDZOQ2NEbVNqWGd5YkIvWDZ6VkdGM3VBemRrK3U5TkFDSVV6TURKdnpUNS93ck8vWlBSbjBFQWd0VE13Q20xQkRYbi9zbm9UeUlBV2NvMjRObmVNU2c3OUorWi9sRUVJRkg5RER6Wkl3YjFoLzRUb3orUUFPUmFKUVBQVnVuQktoUC9tZEVmU3dDaUxkZUF0K1pXWWJsWi81YnBuMHdBMkNFRForMzBVN2c5R1AwSUFIL1pOUU84WmZUelJBRDRCeG5ZbTlIUFN3TEFHVEt3SDZPZnR3U0FpMlJnRDBZL2x3Z0E3NUNCZFJuOVhDY0EzRVFHMW1MMGN3c0I0QTR5VUovUnorMEVnQ09Vb0Jwem53TUVnT05rb0FLam44TUVnQWFVWUR4em44Y0pBTTNJd0JoR1A2MElBTzBwUVEvbVBzMEpBQjBwd2VQTWZmb1JBRVpRZ251Wit3d2dBSXdtQnBjWStnd21BTXdrQm9ZK0V3a0FWZVRFd05DbkNBR2dvdjFpWU9oVGtBQ3docldTWU55ekJBRmdWWFdTWU55ektBRmdUMjN6WU1TekpRRUFDUFd2MlI4QWdEa0VBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJUVNBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBZ2xBQUNoQkFBZ2xBQUFoQklBZ0ZBQ0FCQktBQUJDQ1FCQUtBRUFDQ1VBQUtFRUFDQ1VBQUNFRWdDQVVBSUFFRW9BQUVJSkFFQW9BUUFJSlFBQW9RUUFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSTlYOUpVK3B4SG04eEZnQUFBQUJKUlU1RXJrSmdnZz09IiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9wbmcifV19">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Shadher Body🌼">
+<meta name="theme-color" content="#204F3D">
+</head>
+<body>
+<div class="credit-tag">Created By Sami🌼</div>
+<div class="wrap">
+  <header>
+    <div class="brand">Shadher Body🌼<small>daily plate ledger</small></div>
+    <button class="icon-btn" id="settingsBtn" aria-label="Goals settings">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    </button>
+  </header>
+
+  <div class="banner" id="offlineBanner">Storage isn't available in this view, so entries will only last for this visit — open the app from your Claude app to save them day to day.</div>
+
+  <div class="datenav">
+    <button id="prevDay" aria-label="Previous day">‹</button>
+    <div class="label" id="dateLabel">Today<small id="dateSub"></small></div>
+    <button id="nextDay" aria-label="Next day">›</button>
+  </div>
+
+  <div class="view active" id="viewFood">
+  <div class="summary">
+    <div class="mode-toggle">
+      <button class="mode-chip active" id="modeGainBtn">Gain weight</button>
+      <button class="mode-chip" id="modeLoseBtn">Lose weight</button>
+    </div>
+    <div class="ring-row">
+      <div class="ring">
+        <svg viewBox="0 0 108 108">
+          <circle cx="54" cy="54" r="46" fill="none" stroke="var(--surface-soft)" stroke-width="10"/>
+          <circle id="ringProgress" cx="54" cy="54" r="46" fill="none" stroke="var(--brick)" stroke-width="10" stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="289"/>
+        </svg>
+        <div class="ring-num"><div class="n" id="calNum">0</div><div class="u">kcal eaten</div></div>
+      </div>
+      <div class="ring-side">
+        <div class="goal-line">Goal <b id="calGoalLabel">4000</b> kcal</div>
+        <div class="remaining" id="remainingLabel">4000 kcal left</div>
+      </div>
+    </div>
+    <div class="macros">
+      <div class="macro-row">
+        <div class="macro-label">Protein</div>
+        <div class="macro-track"><div class="macro-fill protein" id="fillProtein" style="width:0%"></div></div>
+        <div class="macro-val"><span id="valProtein">0</span> / <span id="goalProtein">150</span>g</div>
+      </div>
+      <div class="macro-row">
+        <div class="macro-label">Carbs</div>
+        <div class="macro-track"><div class="macro-fill carbs" id="fillCarbs" style="width:0%"></div></div>
+        <div class="macro-val"><span id="valCarbs">0</span> / <span id="goalCarbs">450</span>g</div>
+      </div>
+      <div class="macro-row">
+        <div class="macro-label">Fat</div>
+        <div class="macro-track"><div class="macro-fill fat" id="fillFat" style="width:0%"></div></div>
+        <div class="macro-val"><span id="valFat">0</span> / <span id="goalFat">110</span>g</div>
+      </div>
+      <div class="macro-row">
+        <div class="macro-label">Fiber</div>
+        <div class="macro-track"><div class="macro-fill fiber" id="fillFiber" style="width:0%"></div></div>
+        <div class="macro-val"><span id="valFiber">0</span> / <span id="goalFiber">30</span>g</div>
+      </div>
+      <div class="macro-row" id="stepsRow" style="display:none;">
+        <div class="macro-label">Steps</div>
+        <div class="macro-track"><div class="macro-fill steps" id="fillSteps" style="width:0%"></div></div>
+        <div class="macro-val"><input type="number" id="stepsInput" min="0" step="500" inputmode="numeric" placeholder="0" style="width:58px;border:none;background:none;color:var(--ink);font-size:0.78rem;text-align:right;padding:0;font-family:'Inter',sans-serif;"> / <span id="goalSteps">10000</span></div>
+      </div>
+      <div class="live-row" id="stepsLiveRowWrap" style="display:none;">
+        <div>
+          Live step tracker
+          <div class="live-note">Counts steps while this app is open on your phone — not in the background.</div>
+        </div>
+        <button class="toggle-switch" id="stepsLiveToggle" aria-pressed="false"><span class="knob"></span></button>
+      </div>
+    </div>
+  </div>
+
+  <button class="custom-add-btn" id="loseGuideBtn" style="display:none; margin-bottom:12px;">🥗 Weight-loss food guide</button>
+  <button class="custom-add-btn" id="avoidFoodBtn" style="display:none; margin-bottom:16px;">🚫 Foods I'm avoiding</button>
+
+  <div class="section-title">Add food</div>
+  <div class="search-box">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <input id="searchInput" type="text" placeholder="Search rice, ilish, khichuri, mojo…">
+  </div>
+  <div class="food-list" id="foodList"></div>
+  <button class="custom-add-btn" id="customFoodBtn">+ Type a food — I'll calculate it</button>
+
+  <div class="section-title" id="logTitle">Today's plate</div>
+  <div id="logList"></div>
+  <div class="empty-note" id="logEmpty">Nothing logged yet — add your first item above.</div>
+  </div>
+
+  <!-- ---------------- Prayer view ---------------- -->
+  <div class="view" id="viewPrayer">
+    <div class="section-title">Prayer times
+      <button class="icon-btn" id="prayerSettingsBtn" aria-label="Edit prayer times" style="width:32px;height:32px;">⚙️</button>
+    </div>
+    <div id="prayerList"></div>
+    <div class="sheet-sub" style="margin-top:6px;">Alerts only fire while this app is open on your phone — keep a backup alarm for anything time-critical like Fajr.</div>
+  </div>
+
+  <!-- ---------------- Study view ---------------- -->
+  <div class="view" id="viewStudy">
+    <div class="section-title">Study blocks</div>
+    <div id="studyList"></div>
+    <div class="empty-note" id="studyEmpty">No study blocks for this day yet.</div>
+    <button class="custom-add-btn" id="addStudyBtn">+ Add a study block</button>
+  </div>
+
+  <!-- ---------------- Gym view ---------------- -->
+  <div class="view" id="viewGym">
+    <div class="section-title">Exercises</div>
+    <div id="gymList"></div>
+    <div class="empty-note" id="gymEmpty">No exercises added yet.</div>
+    <button class="custom-add-btn" id="addGymBtn">+ Add an exercise</button>
+  </div>
+</div>
+
+<nav class="tabbar">
+  <button class="tab-btn active" data-view="Food"><div class="ic">🍚</div>Food</button>
+  <button class="tab-btn" data-view="Prayer"><div class="ic">🕌</div>Prayer</button>
+  <button class="tab-btn" data-view="Study"><div class="ic">📚</div>Study</button>
+  <button class="tab-btn" data-view="Gym"><div class="ic">🏋️</div>Gym</button>
+</nav>
+
+<!-- Quantity sheet -->
+<div class="overlay" id="qtyOverlay">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h3 id="qtyFoodName">Food</h3>
+    <div class="sheet-sub" id="qtyFoodSub"></div>
+    <div class="qty-chips" id="qtyChips"></div>
+    <div class="field">
+      <label>Exact servings</label>
+      <input type="number" id="qtyCustom" min="0" step="0.1" inputmode="decimal">
+    </div>
+    <div class="preview-box" id="qtyPreview"></div>
+    <button class="btn btn-primary" id="qtyAddBtn">Add to today's plate</button>
+    <button class="btn btn-ghost" id="qtyCancelBtn">Cancel</button>
+  </div>
+</div>
+
+<!-- Custom food sheet -->
+<div class="overlay" id="customOverlay">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h3>Type a food</h3>
+    <div class="sheet-sub" id="cfSub">Describe what you ate, with the amount — e.g. "2 pieces ilish mach bhaja" or "1 bowl khichuri" — and I'll estimate the nutrition. Check the numbers, then add.</div>
+    <div class="field">
+      <label>Food &amp; amount</label>
+      <input type="text" id="cfName" placeholder="e.g. 1 plate chicken biriyani">
+    </div>
+    <button class="btn btn-primary" id="cfEstimateBtn" style="margin-bottom:14px;">Calculate nutrition</button>
+    <div class="row2">
+      <div class="field"><label>Calories (kcal)</label><input type="number" id="cfCal" min="0" inputmode="decimal"></div>
+      <div class="field"><label>Protein (g)</label><input type="number" id="cfProtein" min="0" inputmode="decimal"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Carbs (g)</label><input type="number" id="cfCarbs" min="0" inputmode="decimal"></div>
+      <div class="field"><label>Fat (g)</label><input type="number" id="cfFat" min="0" inputmode="decimal"></div>
+    </div>
+    <div class="field"><label>Fiber (g)</label><input type="number" id="cfFiber" min="0" inputmode="decimal"></div>
+    <div class="field" id="cfAssumptionsWrap" style="display:none;">
+      <label>Assumed this was made with</label>
+      <div id="cfAssumptions" style="font-size:0.85rem; color:var(--ink-soft); background:var(--surface-soft); border-radius:12px; padding:10px 12px;"></div>
+    </div>
+    <button class="btn btn-primary" id="cfAddBtn">Add to today's plate</button>
+    <button class="btn btn-ghost" id="cfCancelBtn">Cancel</button>
+  </div>
+</div>
+
+<!-- Weight-loss food guide sheet -->
+<div class="overlay" id="guideOverlay">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h3>Weight-loss food guide</h3>
+    <div class="sheet-sub">General pointers for a Bangladeshi plate — not medical advice, just common-sense swaps.</div>
+    <div class="field">
+      <label>Eat more of</label>
+      <div id="eatMoreList" style="font-size:0.88rem; line-height:1.7;"></div>
+    </div>
+    <div class="field">
+      <label>Limit</label>
+      <div id="limitList" style="font-size:0.88rem; line-height:1.7;"></div>
+    </div>
+    <button class="btn btn-ghost" id="guideCloseBtn">Close</button>
+  </div>
+</div>
+
+<!-- Avoid food sheet -->
+<div class="overlay" id="avoidOverlay">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h3>Foods I'm avoiding</h3>
+    <div class="sheet-sub">Keep a personal list to remind yourself what to skip.</div>
+    <div class="search-box" style="margin-bottom:12px;">
+      <input type="text" id="avoidInput" placeholder="e.g. Fried chicken, Coke">
+    </div>
+    <button class="btn btn-primary" id="avoidAddBtn" style="margin-bottom:14px;">Add to avoid list</button>
+    <div id="avoidList"></div>
+    <div class="empty-note" id="avoidEmpty">Nothing on your avoid list yet.</div>
+    <button class="btn btn-ghost" id="avoidCloseBtn">Close</button>
+  </div>
+</div>
+
+<!-- Prayer times settings sheet -->
+<div class="overlay" id="prayerSettingsOverlay">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h3>Prayer times</h3>
+    <div class="sheet-sub">Set today's times from your local mosque or Islamic Foundation calendar — times shift through the year, so revisit this every week or two.</div>
+    <div class="field"><label>Fajr</label><input type="time" id="ptFajr"></div>
+    <div class="field"><label>Zuhr</label><input type="time" id="ptZuhr"></div>
+    <div class="field"><label>Asr</label><input type="time" id="ptAsr"></div>
+    <div class="field"><label>Maghrib</label><input type="time" id="ptMaghrib"></div>
+    <div class="field"><label>Isha</label><input type="time" id="ptIsha"></div>
+    <button class="btn btn-primary" id="ptSaveBtn">Save times</button>
+    <button class="btn btn-ghost" id="ptCancelBtn">Cancel</button>
+  </div>
+</div>
+
+<!-- Study block sheet -->
+<div class="overlay" id="studyOverlay">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h3>Add study block</h3>
+    <div class="sheet-sub">An alarm is set for both the start and end time automatically.</div>
+    <div class="field"><label>Subject</label><input type="text" id="stSubject" placeholder="e.g. Physics"></div>
+    <div class="row2">
+      <div class="field"><label>Start time</label><input type="time" id="stStart"></div>
+      <div class="field"><label>End time</label><input type="time" id="stEnd"></div>
+    </div>
+    <button class="btn btn-primary" id="stAddBtn">Add block</button>
+    <button class="btn btn-ghost" id="stCancelBtn">Cancel</button>
+  </div>
+</div>
+
+<!-- Gym exercise sheet -->
+<div class="overlay" id="gymOverlay">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h3>Add exercise</h3>
+    <div class="sheet-sub">An alarm is set for the exercise time automatically.</div>
+    <div class="field"><label>Exercise name</label><input type="text" id="gxName" placeholder="e.g. Push-ups"></div>
+    <div class="field">
+      <label>Body part</label>
+      <select id="gxPart">
+        <option>Chest</option><option>Back</option><option>Shoulders</option><option>Arms</option><option>Legs</option><option>Core</option><option>Full body</option>
+      </select>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Sets</label><input type="number" id="gxSets" min="0" inputmode="numeric"></div>
+      <div class="field"><label>Reps (optional)</label><input type="number" id="gxReps" min="0" inputmode="numeric"></div>
+    </div>
+    <div class="field"><label>Time</label><input type="time" id="gxTime"></div>
+    <button class="btn btn-primary" id="gxAddBtn">Add exercise</button>
+    <button class="btn btn-ghost" id="gxCancelBtn">Cancel</button>
+  </div>
+</div>
+
+<!-- Goals sheet -->
+<div class="overlay" id="goalsOverlay">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h3>Daily goals</h3>
+    <div class="sheet-sub" id="sheetSub">Defaults are set for a muscle-gain surplus — change them anytime.</div>
+    <div class="qty-chips">
+      <div class="qty-chip active" id="gModeGain">Gain weight</div>
+      <div class="qty-chip" id="gModeLose">Lose weight</div>
+    </div>
+    <div class="goal-fields">
+      <div class="field"><label>Calories (kcal)</label><input type="number" id="gCal" min="0" inputmode="decimal"></div>
+      <div class="field"><label>Protein (g)</label><input type="number" id="gProtein" min="0" inputmode="decimal"></div>
+      <div class="field"><label>Carbs (g)</label><input type="number" id="gCarbs" min="0" inputmode="decimal"></div>
+      <div class="field"><label>Fat (g)</label><input type="number" id="gFat" min="0" inputmode="decimal"></div>
+      <div class="field"><label>Fiber (g)</label><input type="number" id="gFiber" min="0" inputmode="decimal"></div>
+      <div class="field"><label>Steps goal</label><input type="number" id="gSteps" min="0" inputmode="numeric"></div>
+    </div>
+    <button class="btn btn-primary" id="gSaveBtn" style="margin-top:6px;">Save goals</button>
+    <button class="btn btn-ghost" id="gCancelBtn">Cancel</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- Food database (per default serving) ---------------- */
+  var FOOD_DB = [
+    {id:"rice", name:"Rice (Bhat)", sub:"1 cup cooked, 200g", cal:260, protein:5.4, carbs:56, fat:0.6, fiber:0.8},
+    {id:"khichuri", name:"Khichuri", sub:"1 bowl, 300g", cal:450, protein:12, carbs:66, fat:12, fiber:6},
+    {id:"ruti", name:"Ruti (whole wheat)", sub:"1 piece, 30g", cal:80, protein:2.5, carbs:15, fat:0.8, fiber:1.5},
+    {id:"paratha", name:"Paratha (fried)", sub:"1 piece, 60g", cal:200, protein:4, carbs:26, fat:9, fiber:1.5},
+    {id:"ilish", name:"Ilish (Hilsa) curry", sub:"1 piece with gravy, 120g", cal:300, protein:24, carbs:2, fat:22, fiber:0},
+    {id:"rui", name:"Rui fish curry", sub:"1 piece with gravy, 120g", cal:160, protein:22, carbs:2, fat:6, fiber:0.3},
+    {id:"katla", name:"Katla fish curry", sub:"1 piece with gravy, 120g", cal:135, protein:20, carbs:2, fat:5, fiber:0},
+    {id:"pangas", name:"Pangas fish curry", sub:"1 piece with gravy, 120g", cal:145, protein:19, carbs:2, fat:6, fiber:0},
+    {id:"shing", name:"Shing / Magur fish", sub:"1 serving, 100g", cal:115, protein:18, carbs:0, fat:4.5, fiber:0},
+    {id:"chicken", name:"Chicken curry (murgir jhol)", sub:"1 bowl, 200g", cal:360, protein:40, carbs:6, fat:18, fiber:1},
+    {id:"beef", name:"Beef curry (gorur mangsho)", sub:"1 bowl, 200g", cal:500, protein:44, carbs:8, fat:34, fiber:1},
+    {id:"mutton", name:"Mutton curry (khashi)", sub:"1 bowl, 200g", cal:560, protein:42, carbs:6, fat:40, fiber:1},
+    {id:"egg_boiled", name:"Egg, boiled", sub:"1 egg, 50g", cal:78, protein:6.3, carbs:0.6, fat:5.3, fiber:0},
+    {id:"egg_curry", name:"Egg curry (dim bhuna)", sub:"1 egg with gravy, 70g", cal:130, protein:7.5, carbs:3, fat:9.5, fiber:0.3},
+    {id:"dal", name:"Dal (lentil soup)", sub:"1 bowl, 200g", cal:150, protein:9, carbs:22, fat:3, fiber:4},
+    {id:"veg_bhaji", name:"Mixed vegetable bhaji", sub:"1 serving, 150g", cal:135, protein:3, carbs:15, fat:7.5, fiber:4.5},
+    {id:"aloo_bhaji", name:"Aloo bhaji (potato fry)", sub:"1 serving, 150g", cal:225, protein:3, carbs:30, fat:10.5, fiber:3},
+    {id:"shak", name:"Shak (leafy greens)", sub:"1 serving, 100g", cal:50, protein:3, carbs:6, fat:2, fiber:3},
+    {id:"biriyani", name:"Chicken biriyani", sub:"1 plate, 350g", cal:600, protein:25, carbs:75, fat:22, fiber:3},
+    {id:"bhorta", name:"Bhorta (mashed, spiced)", sub:"1 serving, 100g", cal:120, protein:4, carbs:10, fat:7, fiber:3},
+    {id:"chanachur", name:"Chanachur", sub:"1 small pack, 50g", cal:250, protein:7, carbs:22, fat:15, fiber:3},
+    {id:"singara", name:"Singara / Samosa", sub:"1 piece, 50g", cal:130, protein:3, carbs:15, fat:7, fiber:1.5},
+    {id:"puri", name:"Puri", sub:"1 piece, 30g", cal:90, protein:2, carbs:10, fat:5, fiber:0.8},
+    {id:"biscuit", name:"Biscuit (energy/cream)", sub:"1 pack, 40g", cal:180, protein:3, carbs:28, fat:6, fiber:1},
+    {id:"borhani", name:"Borhani", sub:"1 glass, 250ml", cal:150, protein:4, carbs:12, fat:9, fiber:0},
+    {id:"lassi", name:"Lassi (sweet)", sub:"1 glass, 250ml", cal:200, protein:6, carbs:30, fat:6, fiber:0},
+    {id:"mishti_doi", name:"Mishti doi", sub:"1 cup, 100g", cal:180, protein:4, carbs:28, fat:5, fiber:0},
+    {id:"rasgulla", name:"Rasgulla", sub:"1 piece, 40g", cal:90, protein:2, carbs:18, fat:1, fiber:0},
+    {id:"milk", name:"Milk (doodh)", sub:"1 glass, 250ml", cal:150, protein:8, carbs:12, fat:8, fiber:0},
+    {id:"speed", name:"Speed (energy drink)", sub:"1 can, 250ml", cal:110, protein:0, carbs:27, fat:0, fiber:0},
+    {id:"mojo", name:"Mojo", sub:"1 bottle, 250ml", cal:105, protein:0, carbs:27, fat:0, fiber:0},
+    {id:"clemon", name:"Clemon", sub:"1 bottle, 250ml", cal:110, protein:0, carbs:28, fat:0, fiber:0},
+    {id:"rc_cola", name:"RC Cola", sub:"1 bottle, 250ml", cal:105, protein:0, carbs:27, fat:0, fiber:0},
+    {id:"coke", name:"Coca-Cola", sub:"1 bottle, 250ml", cal:105, protein:0, carbs:27, fat:0, fiber:0},
+    {id:"frutika", name:"Pran Frutika (mango)", sub:"1 pack, 250ml", cal:130, protein:0.5, carbs:31, fat:0, fiber:0.5},
+    {id:"frooto", name:"Pran Frooto", sub:"1 pack, 250ml", cal:140, protein:0.5, carbs:34, fat:0, fiber:0.3},
+    {id:"protein_powder", name:"Protein powder (whey)", sub:"1 scoop, 30g", cal:120, protein:24, carbs:3, fat:1.5, fiber:0},
+    {id:"peanut", name:"Peanut (chinabadam)", sub:"1 handful, 30g", cal:170, protein:7, carbs:5, fat:14, fiber:2.5},
+    {id:"banana", name:"Banana", sub:"1 medium, 120g", cal:105, protein:1.3, carbs:27, fat:0.4, fiber:3},
+    {id:"mango", name:"Mango", sub:"1 cup sliced, 165g", cal:100, protein:1.4, carbs:25, fat:0.6, fiber:2.6}
+  ];
+
+  var DEFAULT_GAIN_GOALS = {calories:4000, protein:150, carbs:450, fat:110, fiber:30};
+  var DEFAULT_LOSE_GOALS = {calories:1800, protein:140, carbs:170, fat:55, fiber:30};
+  var DEFAULT_STEPS_GOAL = 10000;
+
+  var EAT_MORE_FOODS = [
+    "Shak (leafy greens) — very low calorie, high fiber",
+    "Dal (lentil soup) — filling protein without much fat",
+    "Grilled or steamed fish (rui, pangas) instead of fried",
+    "Egg whites or boiled eggs",
+    "Mixed vegetable bhaji — go light on oil",
+    "Salad with cucumber, tomato, and lemon",
+    "Plain yogurt (tok doi) instead of mishti doi",
+    "Fruit — banana, mango, guava — instead of sweets",
+    "Plenty of water and unsweetened lebur shorbot"
+  ];
+  var LIMIT_FOODS = [
+    "Fried items — paratha, puri, singara, samosa",
+    "Chanachur and other fried snacks",
+    "Sugary drinks — Speed, Mojo, Clemon, Coke, RC Cola",
+    "Mishti doi, rasgulla, and other sweets",
+    "Biriyani and heavily oiled khichuri, in large portions",
+    "Extra ghee/oil in curries — ask for less at home",
+    "Refined carbs late at night (extra ruti/rice before bed)"
+  ];
+
+  /* ---------------- State ---------------- */
+  var PRAYER_KEYS = ["fajr","zuhr","asr","maghrib","isha"];
+  var PRAYER_LABELS = {fajr:"Fajr", zuhr:"Zuhr", asr:"Asr", maghrib:"Maghrib", isha:"Isha"};
+  var DEFAULT_PRAYER_TIMES = {fajr:"04:45", zuhr:"12:10", asr:"16:15", maghrib:"18:05", isha:"19:25"};
+
+  var state = {
+    date: toDateStr(new Date()),
+    entries: [],
+    customFoods: [],
+    mode: "gain",
+    goalsByMode: {gain: DEFAULT_GAIN_GOALS, lose: DEFAULT_LOSE_GOALS},
+    stepsGoal: DEFAULT_STEPS_GOAL,
+    stepsToday: 0,
+    avoidFoods: [],
+    prayerTimes: DEFAULT_PRAYER_TIMES,
+    prayerAlarms: {fajr:false, zuhr:false, asr:false, maghrib:false, isha:false},
+    prayerDone: {fajr:false, zuhr:false, asr:false, maghrib:false, isha:false},
+    studyBlocks: [],
+    gymExercises: [],
+    gymDoneToday: {},
+    dbReady: false,
+    dbAvailable: null
+  };
+  Object.defineProperty(state, 'goals', {
+    get: function(){ return state.goalsByMode[state.mode]; }
+  });
+  var db = null;
+  var sampler = null;
+  var samplerAvailable = null;
+  var unsubEntries = null;
+  var unsubSteps = null;
+  var unsubPrayerDone = null;
+  var unsubStudy = null;
+  var pendingFood = null; // food selected in qty sheet
+  var pendingQty = 1;
+
+  function toDateStr(d){
+    var y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
+    return y+"-"+m+"-"+day;
+  }
+  function fromDateStr(s){
+    var parts=s.split("-"); return new Date(parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2]));
+  }
+  function fmtDateLabel(s){
+    var today=toDateStr(new Date());
+    var yestD=new Date(); yestD.setDate(yestD.getDate()-1);
+    var yesterday=toDateStr(yestD);
+    if(s===today) return {main:"Today", sub: fromDateStr(s).toLocaleDateString(undefined,{month:'short',day:'numeric'})};
+    if(s===yesterday) return {main:"Yesterday", sub: fromDateStr(s).toLocaleDateString(undefined,{month:'short',day:'numeric'})};
+    return {main: fromDateStr(s).toLocaleDateString(undefined,{weekday:'short'}), sub: fromDateStr(s).toLocaleDateString(undefined,{month:'short',day:'numeric'})};
+  }
+  function round1(n){ return Math.round(n*10)/10; }
+
+  function showToast(msg){
+    var t=document.getElementById('toast');
+    t.textContent=msg; t.classList.add('show');
+    clearTimeout(showToast._h);
+    showToast._h = setTimeout(function(){ t.classList.remove('show'); }, 1800);
+  }
+
+  /* ---------------- AI nutrition estimator ---------------- */
+  async function initSampler(){
+    try{ sampler = await claude.use("sample"); }
+    catch(e){ sampler = null; }
+    samplerAvailable = !!sampler;
+    if(!samplerAvailable){
+      document.getElementById('cfEstimateBtn').style.display = 'none';
+      document.getElementById('cfSub').textContent = "Enter the nutrition for the amount you're about to eat — it's saved for next time too.";
+    }
+  }
+
+  async function estimateFoodNutrition(){
+    var nameEl = document.getElementById('cfName');
+    var desc = nameEl.value.trim();
+    if(!desc){ showToast("Type a food and amount first."); return; }
+    if(!sampler){ showToast("Auto-calculate isn't available here — enter the numbers manually."); return; }
+    var btn = document.getElementById('cfEstimateBtn');
+    var originalText = btn.textContent;
+    btn.textContent = "Calculating…";
+    btn.disabled = true;
+    try{
+      var prompt = "You are a careful nutrition estimator for Bangladeshi and South Asian home cooking. "+
+        "The user describes a food or drink, in English or Bengali, with an amount (e.g. '2 pieces rui mach bhaja', "+
+        "'1 bowl khichuri', 'ilish 200g'). First silently reason about the typical ingredients and quantities for that "+
+        "dish and amount (rice, oil, protein source, spices, etc.) if no amount is given, assume one typical home "+
+        "serving. Then respond with ONLY a JSON object, no markdown fences, no explanation outside the JSON, in "+
+        "exactly this shape: {\"name\": string, \"servingLabel\": string (the amount you assumed), "+
+        "\"assumedIngredients\": string (a short plain-language list of the ingredients/amounts you assumed, e.g. "+
+        "'150g rice, 1 tsp oil, 1 medium fish piece'), \"calories\": number, \"protein\": number, \"carbs\": number, "+
+        "\"fat\": number, \"fiber\": number} — nutrient numbers in grams except calories in kcal, for the TOTAL "+
+        "amount described. Be conservative and realistic rather than optimistic; home-cooked Bangladeshi dishes "+
+        "typically use real oil/ghee, not restaurant-light versions. Food: " + desc;
+      var result = await sampler.json(prompt, {modelTier:"quick"});
+      if(result && typeof result.calories === "number"){
+        if(result.name) nameEl.value = result.name + (result.servingLabel ? " ("+result.servingLabel+")" : "");
+        document.getElementById('cfCal').value = Math.round(result.calories);
+        document.getElementById('cfProtein').value = round1(result.protein||0);
+        document.getElementById('cfCarbs').value = round1(result.carbs||0);
+        document.getElementById('cfFat').value = round1(result.fat||0);
+        document.getElementById('cfFiber').value = round1(result.fiber||0);
+        var awrap = document.getElementById('cfAssumptionsWrap');
+        if(result.assumedIngredients){
+          document.getElementById('cfAssumptions').textContent = result.assumedIngredients;
+          awrap.style.display = 'block';
+        } else {
+          awrap.style.display = 'none';
+        }
+        showToast("Estimated — check the assumptions before adding.");
+      } else {
+        showToast("Couldn't parse an estimate — enter the numbers manually.");
+      }
+    }catch(e){
+      if(e && e.code === "not_granted"){
+        samplerAvailable = false;
+        btn.style.display = 'none';
+        showToast("Auto-calculate isn't available here — enter the numbers manually.");
+      } else if(e && e.code === "rate_limited"){
+        showToast("Too many requests — try again in a moment.");
+      } else {
+        showToast("Couldn't estimate that — enter the numbers manually.");
+      }
+    } finally {
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
+  }
+  document.getElementById('cfEstimateBtn').addEventListener('click', estimateFoodNutrition);
+
+  /* ---------------- DB init ---------------- */
+  async function initDb(){
+    try{
+      db = await claude.use("db");
+    }catch(e){ db = null; }
+    if(!db){
+      state.dbAvailable = false;
+      document.getElementById('offlineBanner').classList.add('show');
+      renderGoalsIntoUI();
+      updateModeUI();
+      renderAll();
+      renderAvoidList();
+      renderPrayer();
+      renderStudy();
+      renderGym();
+      return;
+    }
+    state.dbAvailable = true;
+    // active mode
+    try{
+      db.doc("settings/mode").onSnapshot(function(snap){
+        var m = (snap.exists && snap.data().mode === "lose") ? "lose" : "gain";
+        state.mode = m;
+        renderGoalsIntoUI();
+        renderSummary();
+        updateModeUI();
+      }, function(err){});
+    }catch(e){}
+    // goals per mode
+    try{
+      db.doc("settings/goalsGain").onSnapshot(function(snap){
+        state.goalsByMode.gain = snap.exists ? Object.assign({}, DEFAULT_GAIN_GOALS, snap.data()) : DEFAULT_GAIN_GOALS;
+        renderGoalsIntoUI(); renderSummary();
+      }, function(err){});
+      db.doc("settings/goalsLose").onSnapshot(function(snap){
+        state.goalsByMode.lose = snap.exists ? Object.assign({}, DEFAULT_LOSE_GOALS, snap.data()) : DEFAULT_LOSE_GOALS;
+        renderGoalsIntoUI(); renderSummary();
+      }, function(err){});
+    }catch(e){}
+    // steps goal
+    try{
+      db.doc("settings/stepsGoal").onSnapshot(function(snap){
+        state.stepsGoal = (snap.exists && snap.data().goal) ? snap.data().goal : DEFAULT_STEPS_GOAL;
+        renderSummary();
+      }, function(err){});
+    }catch(e){}
+    // custom foods
+    try{
+      db.collection("customFoods").limit(200).onSnapshot(function(snap){
+        state.customFoods = snap.docs.map(function(d){ var v=d.data(); v._id=d.id; return v; });
+        renderFoodList();
+      }, function(err){});
+    }catch(e){}
+    // avoid foods
+    try{
+      db.collection("avoidFoods").limit(200).onSnapshot(function(snap){
+        state.avoidFoods = snap.docs.map(function(d){ var v=d.data(); v._id=d.id; return v; });
+        renderAvoidList();
+      }, function(err){});
+    }catch(e){}
+    // prayer times & alarms
+    try{
+      db.doc("settings/prayerTimes").onSnapshot(function(snap){
+        state.prayerTimes = snap.exists ? Object.assign({}, DEFAULT_PRAYER_TIMES, snap.data()) : DEFAULT_PRAYER_TIMES;
+        renderPrayer();
+      }, function(err){});
+      db.doc("settings/prayerAlarms").onSnapshot(function(snap){
+        state.prayerAlarms = snap.exists ? Object.assign({fajr:false,zuhr:false,asr:false,maghrib:false,isha:false}, snap.data()) : state.prayerAlarms;
+        renderPrayer();
+      }, function(err){});
+    }catch(e){}
+    // gym routine (persistent) + today's done map
+    try{
+      db.collection("gymExercises").limit(200).onSnapshot(function(snap){
+        state.gymExercises = snap.docs.map(function(d){ var v=d.data(); v._id=d.id; return v; });
+        renderGym();
+      }, function(err){});
+    }catch(e){}
+    subscribeToDate(state.date);
+  }
+
+  function subscribeToDate(dateStr){
+    if(unsubEntries){ try{ unsubEntries(); }catch(e){} unsubEntries=null; }
+    if(unsubSteps){ try{ unsubSteps(); }catch(e){} unsubSteps=null; }
+    if(unsubPrayerDone){ try{ unsubPrayerDone(); }catch(e){} unsubPrayerDone=null; }
+    if(unsubStudy){ try{ unsubStudy(); }catch(e){} unsubStudy=null; }
+    if(!db){ renderAll(); return; }
+    try{
+      unsubEntries = db.collection("entries").where("date","==",dateStr).orderBy("ts","asc").onSnapshot(function(snap){
+        state.entries = snap.docs.map(function(d){ var v=d.data(); v._id=d.id; return v; });
+        renderAll();
+      }, function(err){
+        showToast("Couldn't load that day — try again.");
+      });
+    }catch(e){}
+    try{
+      unsubSteps = db.doc("steps/"+dateStr).onSnapshot(function(snap){
+        state.stepsToday = (snap.exists && snap.data().count) ? snap.data().count : 0;
+        renderSummary();
+      }, function(err){});
+    }catch(e){}
+    try{
+      unsubPrayerDone = db.doc("prayers/"+dateStr).onSnapshot(function(snap){
+        state.prayerDone = snap.exists ? Object.assign({fajr:false,zuhr:false,asr:false,maghrib:false,isha:false}, snap.data()) : {fajr:false,zuhr:false,asr:false,maghrib:false,isha:false};
+        renderPrayer();
+      }, function(err){});
+    }catch(e){}
+    try{
+      unsubStudy = db.collection("study").where("date","==",dateStr).orderBy("startTime","asc").onSnapshot(function(snap){
+        state.studyBlocks = snap.docs.map(function(d){ var v=d.data(); v._id=d.id; return v; });
+        renderStudy();
+      }, function(err){});
+    }catch(e){}
+    try{
+      db.doc("gymDone/"+dateStr).onSnapshot(function(snap){
+        state.gymDoneToday = snap.exists ? snap.data() : {};
+        renderGym();
+      }, function(err){});
+    }catch(e){}
+  }
+
+  /* ---------------- Rendering ---------------- */
+  function renderGoalsIntoUI(){
+    document.getElementById('calGoalLabel').textContent = state.goals.calories;
+    document.getElementById('goalProtein').textContent = state.goals.protein;
+    document.getElementById('goalCarbs').textContent = state.goals.carbs;
+    document.getElementById('goalFat').textContent = state.goals.fat;
+    document.getElementById('goalFiber').textContent = state.goals.fiber;
+  }
+
+  function computeTotals(){
+    var t = {calories:0, protein:0, carbs:0, fat:0, fiber:0};
+    state.entries.forEach(function(e){
+      t.calories += e.cal||0; t.protein += e.protein||0; t.carbs += e.carbs||0; t.fat += e.fat||0; t.fiber += e.fiber||0;
+    });
+    return t;
+  }
+
+  function renderSummary(){
+    var t = computeTotals();
+    var g = state.goals;
+    document.getElementById('calNum').textContent = Math.round(t.calories);
+    var pct = Math.max(0, Math.min(1, t.calories / (g.calories||1)));
+    var circumference = 2*Math.PI*46;
+    var ring = document.getElementById('ringProgress');
+    ring.setAttribute('stroke-dasharray', circumference);
+    ring.setAttribute('stroke-dashoffset', circumference * (1-pct));
+    ring.setAttribute('stroke', t.calories > g.calories ? 'var(--brick)' : 'var(--green)');
+
+    var remaining = g.calories - t.calories;
+    var remLabel = document.getElementById('remainingLabel');
+    if(remaining >= 0){
+      remLabel.textContent = Math.round(remaining) + " kcal left";
+      remLabel.classList.remove('over');
+    } else {
+      remLabel.textContent = Math.round(-remaining) + " kcal over";
+      remLabel.classList.add('over');
+    }
+
+    setMacro('Protein', t.protein, g.protein);
+    setMacro('Carbs', t.carbs, g.carbs);
+    setMacro('Fat', t.fat, g.fat);
+    setMacro('Fiber', t.fiber, g.fiber);
+
+    document.getElementById('fillSteps').style.width = Math.max(0,Math.min(100, (state.stepsToday/(state.stepsGoal||1))*100)) + "%";
+    document.getElementById('goalSteps').textContent = state.stepsGoal;
+    var stepsInput = document.getElementById('stepsInput');
+    if(document.activeElement !== stepsInput){ stepsInput.value = state.stepsToday || ""; }
+
+    var dl = fmtDateLabel(state.date);
+    document.getElementById('dateLabel').firstChild.textContent = dl.main;
+    document.getElementById('dateSub').textContent = dl.sub;
+    document.getElementById('logTitle').textContent = (dl.main==="Today" ? "Today's" : dl.main+"'s") + " plate";
+  }
+
+  function updateModeUI(){
+    var isLose = state.mode === "lose";
+    document.getElementById('modeGainBtn').classList.toggle('active', !isLose);
+    document.getElementById('modeLoseBtn').classList.toggle('active', isLose);
+    document.getElementById('stepsRow').style.display = isLose ? 'flex' : 'none';
+    document.getElementById('stepsLiveRowWrap').style.display = isLose ? 'flex' : 'none';
+    document.getElementById('loseGuideBtn').style.display = isLose ? 'flex' : 'none';
+    document.getElementById('avoidFoodBtn').style.display = isLose ? 'flex' : 'none';
+    document.getElementById('sheetSub').textContent = "Defaults are set for a "+(isLose ? "moderate deficit" : "muscle-gain surplus")+" — change them anytime.";
+  }
+
+  async function setMode(newMode){
+    if(state.mode === newMode) return;
+    state.mode = newMode;
+    updateModeUI();
+    renderGoalsIntoUI();
+    renderSummary();
+    if(db){
+      try{ await db.doc("settings/mode").set({mode:newMode}); }
+      catch(e){}
+    }
+  }
+  document.getElementById('modeGainBtn').addEventListener('click', function(){ setMode('gain'); });
+  document.getElementById('modeLoseBtn').addEventListener('click', function(){ setMode('lose'); });
+
+  async function saveSteps(count){
+    state.stepsToday = count;
+    renderSummary();
+    if(db){
+      try{ await db.doc("steps/"+state.date).set({count:count}); }
+      catch(e){ showToast("Couldn't save steps — try again."); }
+    }
+  }
+  document.getElementById('stepsInput').addEventListener('change', function(){
+    var v = parseInt(this.value, 10);
+    if(isNaN(v) || v<0) v=0;
+    saveSteps(v);
+  });
+
+  /* ---------------- Live step tracker (motion-based, foreground only) ---------------- */
+  var motionActive = false;
+  var motionBuffer = [];
+  var lastPeakTime = 0;
+  var stepsSaveTimer = null;
+  function handleMotion(e){
+    var ac = e.accelerationIncludingGravity || e.acceleration;
+    if(!ac || ac.x===null) return;
+    var mag = Math.sqrt((ac.x||0)*(ac.x||0) + (ac.y||0)*(ac.y||0) + (ac.z||0)*(ac.z||0));
+    motionBuffer.push(mag);
+    if(motionBuffer.length>6) motionBuffer.shift();
+    var avg = motionBuffer.reduce(function(a,b){return a+b;},0)/motionBuffer.length;
+    var now = Date.now();
+    if(mag - avg > 3.2 && now - lastPeakTime > 300){
+      lastPeakTime = now;
+      state.stepsToday = (state.stepsToday||0) + 1;
+      renderSummary();
+      clearTimeout(stepsSaveTimer);
+      stepsSaveTimer = setTimeout(function(){ saveSteps(state.stepsToday); }, 4000);
+    }
+  }
+  async function toggleStepsLive(){
+    var btn = document.getElementById('stepsLiveToggle');
+    if(!motionActive){
+      if(typeof DeviceMotionEvent === "undefined"){
+        showToast("This device doesn't support motion sensing in the browser.");
+        return;
+      }
+      if(typeof DeviceMotionEvent.requestPermission === "function"){
+        try{
+          var res = await DeviceMotionEvent.requestPermission();
+          if(res !== "granted"){ showToast("Motion access was declined — enable it in your phone's browser settings."); return; }
+        }catch(e){ showToast("Couldn't get motion permission."); return; }
+      }
+      window.addEventListener('devicemotion', handleMotion);
+      motionActive = true;
+      btn.classList.add('on');
+      showToast("Live step tracking on — keep the app open while you walk.");
+    } else {
+      window.removeEventListener('devicemotion', handleMotion);
+      motionActive = false;
+      btn.classList.remove('on');
+      saveSteps(state.stepsToday);
+      showToast("Live step tracking off.");
+    }
+  }
+  document.getElementById('stepsLiveToggle').addEventListener('click', toggleStepsLive);
+
+  /* ---------------- Avoid foods ---------------- */
+  function renderAvoidList(){
+    var container = document.getElementById('avoidList');
+    var empty = document.getElementById('avoidEmpty');
+    container.innerHTML = "";
+    if(state.avoidFoods.length===0){ empty.style.display='block'; return; }
+    empty.style.display='none';
+    state.avoidFoods.forEach(function(f){
+      var item=document.createElement('div'); item.className='list-item';
+      item.innerHTML = '<div class="list-item-top"><div class="list-item-name"></div><button class="del-btn" aria-label="Remove">'+
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>'+
+        '</button></div>';
+      item.querySelector('.list-item-name').textContent = "🚫 " + f.name;
+      item.querySelector('.del-btn').addEventListener('click', function(){ deleteAvoidFood(f._id); });
+      container.appendChild(item);
+    });
+  }
+  async function addAvoidFood(){
+    var input = document.getElementById('avoidInput');
+    var name = input.value.trim();
+    if(!name){ showToast("Type a food name first."); return; }
+    if(db){
+      try{ await db.collection("avoidFoods").add({name:name}); }
+      catch(e){ showToast("Couldn't save — try again."); return; }
+    } else {
+      state.avoidFoods.push({name:name, _id:"local_"+Date.now()});
+      renderAvoidList();
+    }
+    input.value = "";
+  }
+  async function deleteAvoidFood(id){
+    if(db){
+      try{ await db.doc("avoidFoods/"+id).delete(); }
+      catch(e){ showToast("Couldn't remove — try again."); }
+    } else {
+      state.avoidFoods = state.avoidFoods.filter(function(f){ return f._id!==id; });
+      renderAvoidList();
+    }
+  }
+  document.getElementById('avoidFoodBtn').addEventListener('click', function(){
+    document.getElementById('avoidOverlay').classList.add('show');
+  });
+  document.getElementById('avoidAddBtn').addEventListener('click', addAvoidFood);
+  document.getElementById('avoidCloseBtn').addEventListener('click', function(){ document.getElementById('avoidOverlay').classList.remove('show'); });
+
+  document.getElementById('loseGuideBtn').addEventListener('click', function(){
+    document.getElementById('guideOverlay').classList.add('show');
+  });
+  document.getElementById('guideCloseBtn').addEventListener('click', function(){
+    document.getElementById('guideOverlay').classList.remove('show');
+  });
+
+  function setMacro(name, val, goal){
+    var key = name.toLowerCase();
+    document.getElementById('fill'+name).style.width = Math.max(0,Math.min(100, (val/(goal||1))*100)) + "%";
+    document.getElementById('val'+name).textContent = round1(val);
+  }
+
+  function allFoods(){
+    return FOOD_DB.concat(state.customFoods.map(function(f){
+      return {id:f._id, name:f.name, sub:"custom · "+ (f.unitLabel||"1 serving"), cal:f.cal, protein:f.protein, carbs:f.carbs, fat:f.fat, fiber:f.fiber, custom:true};
+    }));
+  }
+
+  function renderFoodList(){
+    var q = (document.getElementById('searchInput').value||"").trim().toLowerCase();
+    var list = allFoods();
+    if(q){ list = list.filter(function(f){ return f.name.toLowerCase().indexOf(q)>=0; }); }
+    var container = document.getElementById('foodList');
+    container.innerHTML = "";
+    if(list.length===0){
+      var e=document.createElement('div'); e.className='empty-note'; e.textContent="No matches — add it as a custom food below.";
+      container.appendChild(e); return;
+    }
+    list.slice(0,40).forEach(function(f){
+      var item=document.createElement('div'); item.className='food-item';
+      item.innerHTML =
+        '<div><div class="fi-name"></div><div class="fi-sub"></div></div>'+
+        '<div class="fi-cal"></div>';
+      item.querySelector('.fi-name').textContent = f.name;
+      item.querySelector('.fi-sub').textContent = f.sub;
+      var calBox = item.querySelector('.fi-cal');
+      calBox.textContent = Math.round(f.cal)+" kcal";
+      var small=document.createElement('small'); small.textContent = round1(f.protein)+"g protein";
+      calBox.appendChild(small);
+      item.addEventListener('click', function(){ openQtySheet(f); });
+      container.appendChild(item);
+    });
+  }
+
+  function renderLog(){
+    var container = document.getElementById('logList');
+    var empty = document.getElementById('logEmpty');
+    container.innerHTML = "";
+    if(state.entries.length===0){ empty.style.display='block'; return; }
+    empty.style.display='none';
+    state.entries.slice().reverse().forEach(function(e){
+      var item=document.createElement('div'); item.className='log-item';
+      item.innerHTML =
+        '<div class="log-main"><div class="ln"></div><div class="ls"></div></div>'+
+        '<div class="log-right"><div class="log-cal"></div><button class="del-btn" aria-label="Delete">'+
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>'+
+        '</button></div>';
+      item.querySelector('.ln').textContent = e.name;
+      item.querySelector('.ls').textContent = round1(e.qty)+"× "+(e.unitLabel||"serving")+" · "+round1(e.protein)+"g protein";
+      item.querySelector('.log-cal').textContent = Math.round(e.cal)+" kcal";
+      item.querySelector('.del-btn').addEventListener('click', function(){ deleteEntry(e._id); });
+      container.appendChild(item);
+    });
+  }
+
+  function renderAll(){
+    renderSummary();
+    renderFoodList();
+    renderLog();
+  }
+
+  /* ---------------- Tab switching ---------------- */
+  var VIEW_NAMES = ["Food","Prayer","Study","Gym"];
+  function switchView(name){
+    VIEW_NAMES.forEach(function(v){
+      document.getElementById('view'+v).classList.toggle('active', v===name);
+    });
+    Array.from(document.querySelectorAll('.tab-btn')).forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-view')===name);
+    });
+  }
+  Array.from(document.querySelectorAll('.tab-btn')).forEach(function(btn){
+    btn.addEventListener('click', function(){ switchView(btn.getAttribute('data-view')); });
+  });
+
+  /* ---------------- Prayer view ---------------- */
+  function renderPrayer(){
+    var container = document.getElementById('prayerList');
+    container.innerHTML = "";
+    PRAYER_KEYS.forEach(function(k){
+      var item = document.createElement('div'); item.className='prayer-item';
+      var timeStr = state.prayerTimes[k] || "--:--";
+      var done = !!state.prayerDone[k];
+      var alarmOn = !!state.prayerAlarms[k];
+      item.innerHTML =
+        '<div><div class="prayer-name">'+PRAYER_LABELS[k]+'</div><div class="prayer-time">'+formatTime12(timeStr)+'</div></div>'+
+        '<div class="prayer-actions">'+
+        '<button class="bell-btn'+(alarmOn?' on':'')+'" data-k="'+k+'" data-act="bell">'+(alarmOn?'🔔':'🔕')+'</button>'+
+        '<button class="tick-circle'+(done?' on':'')+'" data-k="'+k+'" data-act="tick">✓</button>'+
+        '</div>';
+      container.appendChild(item);
+    });
+    Array.from(container.querySelectorAll('[data-act="bell"]')).forEach(function(btn){
+      btn.addEventListener('click', function(){ togglePrayerAlarm(btn.getAttribute('data-k')); });
+    });
+    Array.from(container.querySelectorAll('[data-act="tick"]')).forEach(function(btn){
+      btn.addEventListener('click', function(){ togglePrayerDone(btn.getAttribute('data-k')); });
+    });
+  }
+  function formatTime12(t){
+    if(!t || t.indexOf(":")<0) return t;
+    var parts=t.split(":"); var h=parseInt(parts[0],10); var m=parts[1];
+    var suffix = h>=12 ? "PM" : "AM";
+    var h12 = h%12; if(h12===0) h12=12;
+    return h12+":"+m+" "+suffix;
+  }
+  async function togglePrayerDone(k){
+    state.prayerDone[k] = !state.prayerDone[k];
+    renderPrayer();
+    if(db){
+      try{ await db.doc("prayers/"+state.date).set(state.prayerDone); }
+      catch(e){ showToast("Couldn't save — try again."); }
+    }
+  }
+  async function togglePrayerAlarm(k){
+    state.prayerAlarms[k] = !state.prayerAlarms[k];
+    renderPrayer();
+    if(state.prayerAlarms[k]) await ensureNotifyPermission();
+    if(db){
+      try{ await db.doc("settings/prayerAlarms").set(state.prayerAlarms); }
+      catch(e){ showToast("Couldn't save — try again."); }
+    }
+  }
+  document.getElementById('prayerSettingsBtn').addEventListener('click', function(){
+    PRAYER_KEYS.forEach(function(k){
+      document.getElementById('pt'+k.charAt(0).toUpperCase()+k.slice(1)).value = state.prayerTimes[k] || "";
+    });
+    document.getElementById('prayerSettingsOverlay').classList.add('show');
+  });
+  document.getElementById('ptCancelBtn').addEventListener('click', function(){ document.getElementById('prayerSettingsOverlay').classList.remove('show'); });
+  document.getElementById('ptSaveBtn').addEventListener('click', async function(){
+    var times = {};
+    PRAYER_KEYS.forEach(function(k){
+      times[k] = document.getElementById('pt'+k.charAt(0).toUpperCase()+k.slice(1)).value || DEFAULT_PRAYER_TIMES[k];
+    });
+    if(db){
+      try{ await db.doc("settings/prayerTimes").set(times); showToast("Prayer times saved."); }
+      catch(e){ showToast("Couldn't save — try again."); }
+    } else {
+      state.prayerTimes = times; renderPrayer();
+      showToast("Times updated (not saved — storage unavailable here).");
+    }
+    document.getElementById('prayerSettingsOverlay').classList.remove('show');
+  });
+
+  /* ---------------- Study view ---------------- */
+  function renderStudy(){
+    var container = document.getElementById('studyList');
+    var empty = document.getElementById('studyEmpty');
+    container.innerHTML = "";
+    if(state.studyBlocks.length===0){ empty.style.display='block'; return; }
+    empty.style.display='none';
+    state.studyBlocks.forEach(function(s){
+      var item=document.createElement('div'); item.className='list-item';
+      item.innerHTML =
+        '<div class="list-item-top"><div><div class="list-item-name"></div><div class="list-item-sub"></div></div>'+
+        '<button class="del-btn" aria-label="Delete">'+
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>'+
+        '</button></div>';
+      item.querySelector('.list-item-name').textContent = s.subject;
+      item.querySelector('.list-item-sub').textContent = formatTime12(s.startTime) + " – " + formatTime12(s.endTime) + " 🔔";
+      item.querySelector('.del-btn').addEventListener('click', function(){ deleteStudyBlock(s._id); });
+      container.appendChild(item);
+    });
+  }
+  document.getElementById('addStudyBtn').addEventListener('click', function(){
+    document.getElementById('stSubject').value = "";
+    document.getElementById('stStart').value = "";
+    document.getElementById('stEnd').value = "";
+    document.getElementById('studyOverlay').classList.add('show');
+  });
+  document.getElementById('stCancelBtn').addEventListener('click', function(){ document.getElementById('studyOverlay').classList.remove('show'); });
+  document.getElementById('stAddBtn').addEventListener('click', async function(){
+    var subject = document.getElementById('stSubject').value.trim();
+    var start = document.getElementById('stStart').value;
+    var end = document.getElementById('stEnd').value;
+    if(!subject || !start || !end){ showToast("Fill in subject, start, and end time."); return; }
+    await ensureNotifyPermission();
+    var block = {date: state.date, subject: subject, startTime: start, endTime: end, ts: Date.now()};
+    if(db){
+      try{ await db.collection("study").add(block); }
+      catch(e){ showToast("Couldn't save — try again."); return; }
+    } else {
+      block._id = "local_"+Date.now();
+      state.studyBlocks.push(block);
+      state.studyBlocks.sort(function(a,b){ return a.startTime.localeCompare(b.startTime); });
+      renderStudy();
+    }
+    document.getElementById('studyOverlay').classList.remove('show');
+  });
+  async function deleteStudyBlock(id){
+    if(db){
+      try{ await db.doc("study/"+id).delete(); }
+      catch(e){ showToast("Couldn't delete — try again."); }
+    } else {
+      state.studyBlocks = state.studyBlocks.filter(function(s){ return s._id!==id; });
+      renderStudy();
+    }
+  }
+
+  /* ---------------- Gym view ---------------- */
+  function renderGym(){
+    var container = document.getElementById('gymList');
+    var empty = document.getElementById('gymEmpty');
+    container.innerHTML = "";
+    if(state.gymExercises.length===0){ empty.style.display='block'; return; }
+    empty.style.display='none';
+    var byPart = {};
+    state.gymExercises.forEach(function(ex){
+      var part = ex.part || "Other";
+      if(!byPart[part]) byPart[part]=[];
+      byPart[part].push(ex);
+    });
+    Object.keys(byPart).forEach(function(part){
+      var label=document.createElement('div'); label.className='group-label'; label.textContent=part;
+      container.appendChild(label);
+      byPart[part].forEach(function(ex){
+        var done = !!state.gymDoneToday[ex._id];
+        var item=document.createElement('div'); item.className='list-item';
+        item.innerHTML =
+          '<div class="list-item-top"><div><div class="list-item-name"></div><div class="list-item-sub"></div></div>'+
+          '<div class="prayer-actions">'+
+          '<button class="tick-circle'+(done?' on':'')+'" data-act="tick">✓</button>'+
+          '<button class="del-btn" data-act="del" aria-label="Delete">'+
+          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>'+
+          '</button></div></div>';
+        item.querySelector('.list-item-name').textContent = ex.name;
+        var subParts = [];
+        if(ex.sets) subParts.push(ex.sets+" sets");
+        if(ex.reps) subParts.push(ex.reps+" reps");
+        if(ex.time) subParts.push(formatTime12(ex.time)+" 🔔");
+        item.querySelector('.list-item-sub').textContent = subParts.join(" · ");
+        item.querySelector('[data-act="tick"]').addEventListener('click', function(){ toggleGymDone(ex._id); });
+        item.querySelector('[data-act="del"]').addEventListener('click', function(){ deleteGymExercise(ex._id); });
+        container.appendChild(item);
+      });
+    });
+  }
+  document.getElementById('addGymBtn').addEventListener('click', function(){
+    document.getElementById('gxName').value = "";
+    document.getElementById('gxSets').value = "";
+    document.getElementById('gxReps').value = "";
+    document.getElementById('gxTime').value = "";
+    document.getElementById('gymOverlay').classList.add('show');
+  });
+  document.getElementById('gxCancelBtn').addEventListener('click', function(){ document.getElementById('gymOverlay').classList.remove('show'); });
+  document.getElementById('gxAddBtn').addEventListener('click', async function(){
+    var name = document.getElementById('gxName').value.trim();
+    var part = document.getElementById('gxPart').value;
+    var sets = parseInt(document.getElementById('gxSets').value, 10) || 0;
+    var reps = parseInt(document.getElementById('gxReps').value, 10) || 0;
+    var time = document.getElementById('gxTime').value;
+    if(!name){ showToast("Give the exercise a name."); return; }
+    if(time) await ensureNotifyPermission();
+    var ex = {name:name, part:part, sets:sets, reps:reps, time:time};
+    if(db){
+      try{ await db.collection("gymExercises").add(ex); }
+      catch(e){ showToast("Couldn't save — try again."); return; }
+    } else {
+      ex._id = "local_"+Date.now();
+      state.gymExercises.push(ex);
+      renderGym();
+    }
+    document.getElementById('gymOverlay').classList.remove('show');
+  });
+  async function toggleGymDone(id){
+    state.gymDoneToday[id] = !state.gymDoneToday[id];
+    renderGym();
+    if(db){
+      try{ await db.doc("gymDone/"+state.date).set(state.gymDoneToday); }
+      catch(e){ showToast("Couldn't save — try again."); }
+    }
+  }
+  async function deleteGymExercise(id){
+    if(db){
+      try{ await db.doc("gymExercises/"+id).delete(); }
+      catch(e){ showToast("Couldn't delete — try again."); }
+    } else {
+      state.gymExercises = state.gymExercises.filter(function(e){ return e._id!==id; });
+      renderGym();
+    }
+  }
+
+  /* ---------------- Notifications / alarm engine ---------------- */
+  var firedToday = {};
+  async function ensureNotifyPermission(){
+    if(typeof Notification === "undefined") return false;
+    if(Notification.permission === "granted") return true;
+    if(Notification.permission === "denied"){
+      showToast("Notifications are blocked for this app in your browser settings.");
+      return false;
+    }
+    try{ var p = await Notification.requestPermission(); return p === "granted"; }
+    catch(e){ return false; }
+  }
+  function fireAlert(id, title, body){
+    if(firedToday[id]) return;
+    firedToday[id] = true;
+    if(typeof Notification !== "undefined" && Notification.permission === "granted"){
+      try{ new Notification(title, {body: body||""}); }catch(e){}
+    }
+    showToast(title + (body ? " — "+body : ""));
+    if(navigator.vibrate){ try{ navigator.vibrate([200,80,200]); }catch(e){} }
+  }
+  function nowHHMM(){
+    var d = new Date();
+    return String(d.getHours()).padStart(2,'0')+":"+String(d.getMinutes()).padStart(2,'0');
+  }
+  function checkAlarms(){
+    var realToday = toDateStr(new Date());
+    var now = nowHHMM();
+    var viewingToday = state.date === realToday;
+    if(viewingToday){
+      PRAYER_KEYS.forEach(function(k){
+        if(state.prayerAlarms[k] && state.prayerTimes[k]===now){
+          fireAlert("prayer_"+realToday+"_"+k, PRAYER_LABELS[k]+" time", "It's time for "+PRAYER_LABELS[k]+" prayer.");
+        }
+      });
+      state.studyBlocks.forEach(function(s){
+        if(s.startTime===now) fireAlert("study_start_"+s._id, "Study time", s.subject+" is starting now.");
+        if(s.endTime===now) fireAlert("study_end_"+s._id, "Study session ending", s.subject+" session is over.");
+      });
+    }
+    state.gymExercises.forEach(function(ex){
+      if(ex.time && ex.time===now){
+        fireAlert("gym_"+realToday+"_"+ex._id, "Workout time", ex.name+(ex.sets?" — "+ex.sets+" sets":""));
+      }
+    });
+  }
+  setInterval(checkAlarms, 20000);
+
+  /* ---------------- Quantity sheet ---------------- */
+  function openQtySheet(food){
+    pendingFood = food;
+    pendingQty = 1;
+    document.getElementById('qtyFoodName').textContent = food.name;
+    document.getElementById('qtyFoodSub').textContent = "1 serving = " + food.sub.replace(/^custom · /,'');
+    document.getElementById('qtyCustom').value = 1;
+    buildQtyChips();
+    updateQtyPreview();
+    document.getElementById('qtyOverlay').classList.add('show');
+  }
+  function buildQtyChips(){
+    var chips = [0.5, 1, 1.5, 2, 3];
+    var wrap = document.getElementById('qtyChips');
+    wrap.innerHTML = "";
+    chips.forEach(function(v){
+      var c=document.createElement('div'); c.className='qty-chip'+(v===1?' active':''); c.textContent = v+"×";
+      c.addEventListener('click', function(){
+        pendingQty=v;
+        document.getElementById('qtyCustom').value=v;
+        Array.from(wrap.children).forEach(function(ch){ ch.classList.remove('active'); });
+        c.classList.add('active');
+        updateQtyPreview();
+      });
+      wrap.appendChild(c);
+    });
+  }
+  function updateQtyPreview(){
+    var f=pendingFood; if(!f) return;
+    var q=pendingQty;
+    var box=document.getElementById('qtyPreview');
+    box.innerHTML =
+      '<div><b>'+Math.round(f.cal*q)+'</b><span>kcal</span></div>'+
+      '<div><b>'+round1(f.protein*q)+'</b><span>protein</span></div>'+
+      '<div><b>'+round1(f.carbs*q)+'</b><span>carbs</span></div>'+
+      '<div><b>'+round1(f.fat*q)+'</b><span>fat</span></div>'+
+      '<div><b>'+round1(f.fiber*q)+'</b><span>fiber</span></div>';
+  }
+  document.getElementById('qtyCustom').addEventListener('input', function(){
+    var v=parseFloat(this.value); if(isNaN(v)||v<0) v=0;
+    pendingQty=v;
+    Array.from(document.getElementById('qtyChips').children).forEach(function(ch){ ch.classList.remove('active'); });
+    updateQtyPreview();
+  });
+  document.getElementById('qtyCancelBtn').addEventListener('click', function(){ document.getElementById('qtyOverlay').classList.remove('show'); });
+  document.getElementById('qtyAddBtn').addEventListener('click', function(){
+    if(!pendingFood || !pendingQty || pendingQty<=0){ showToast("Enter how many servings."); return; }
+    addEntry({
+      name: pendingFood.name,
+      unitLabel: pendingFood.sub.replace(/^custom · /,''),
+      qty: pendingQty,
+      cal: pendingFood.cal*pendingQty,
+      protein: pendingFood.protein*pendingQty,
+      carbs: pendingFood.carbs*pendingQty,
+      fat: pendingFood.fat*pendingQty,
+      fiber: pendingFood.fiber*pendingQty
+    });
+    document.getElementById('qtyOverlay').classList.remove('show');
+  });
+
+  /* ---------------- Custom food sheet ---------------- */
+  document.getElementById('customFoodBtn').addEventListener('click', function(){
+    ['cfName','cfCal','cfProtein','cfCarbs','cfFat','cfFiber'].forEach(function(id){ document.getElementById(id).value=""; });
+    document.getElementById('cfAssumptionsWrap').style.display = 'none';
+    document.getElementById('customOverlay').classList.add('show');
+  });
+  document.getElementById('cfCancelBtn').addEventListener('click', function(){ document.getElementById('customOverlay').classList.remove('show'); });
+  document.getElementById('cfAddBtn').addEventListener('click', async function(){
+    var name=document.getElementById('cfName').value.trim();
+    var cal=parseFloat(document.getElementById('cfCal').value)||0;
+    var protein=parseFloat(document.getElementById('cfProtein').value)||0;
+    var carbs=parseFloat(document.getElementById('cfCarbs').value)||0;
+    var fat=parseFloat(document.getElementById('cfFat').value)||0;
+    var fiber=parseFloat(document.getElementById('cfFiber').value)||0;
+    if(!name){ showToast("Give it a name."); return; }
+    if(cal<=0){ showToast("Add a calorie amount."); return; }
+    var foodObj = {name:name, unitLabel:"1 serving", cal:cal, protein:protein, carbs:carbs, fat:fat, fiber:fiber};
+    if(db){
+      try{ await db.collection("customFoods").add(foodObj); }
+      catch(e){ /* still log the entry even if saving to the list fails */ }
+    } else {
+      foodObj._id = "local_"+Date.now();
+      state.customFoods.push(foodObj);
+      renderFoodList();
+    }
+    addEntry({name:name, unitLabel:"1 serving", qty:1, cal:cal, protein:protein, carbs:carbs, fat:fat, fiber:fiber});
+    document.getElementById('customOverlay').classList.remove('show');
+  });
+
+  /* ---------------- Entries ---------------- */
+  async function addEntry(entry){
+    entry.date = state.date;
+    entry.ts = Date.now();
+    if(db){
+      try{
+        await db.collection("entries").add(entry);
+        showToast("Added to today's plate.");
+      }catch(e){
+        showToast("Couldn't save that — try again.");
+      }
+    } else {
+      entry._id = "local_"+Date.now()+"_"+Math.random().toString(36).slice(2);
+      state.entries.push(entry);
+      renderAll();
+      showToast("Added (not saved — storage unavailable here).");
+    }
+  }
+  async function deleteEntry(id){
+    if(db){
+      try{ await db.doc("entries/"+id).delete(); }
+      catch(e){ showToast("Couldn't delete — try again."); }
+    } else {
+      state.entries = state.entries.filter(function(e){ return e._id!==id; });
+      renderAll();
+    }
+  }
+
+  /* ---------------- Date nav ---------------- */
+  document.getElementById('prevDay').addEventListener('click', function(){
+    var d=fromDateStr(state.date); d.setDate(d.getDate()-1);
+    state.date = toDateStr(d);
+    subscribeToDate(state.date);
+    renderSummary();
+  });
+  document.getElementById('nextDay').addEventListener('click', function(){
+    var d=fromDateStr(state.date); d.setDate(d.getDate()+1);
+    state.date = toDateStr(d);
+    subscribeToDate(state.date);
+    renderSummary();
+  });
+
+  /* ---------------- Search ---------------- */
+  document.getElementById('searchInput').addEventListener('input', renderFoodList);
+
+  /* ---------------- Goals sheet ---------------- */
+  var settingsEditMode = "gain";
+  function populateGoalFields(mode){
+    var g = state.goalsByMode[mode];
+    document.getElementById('gCal').value = g.calories;
+    document.getElementById('gProtein').value = g.protein;
+    document.getElementById('gCarbs').value = g.carbs;
+    document.getElementById('gFat').value = g.fat;
+    document.getElementById('gFiber').value = g.fiber;
+    document.getElementById('gSteps').value = state.stepsGoal;
+    document.getElementById('gModeGain').classList.toggle('active', mode==='gain');
+    document.getElementById('gModeLose').classList.toggle('active', mode==='lose');
+  }
+  document.getElementById('gModeGain').addEventListener('click', function(){ settingsEditMode='gain'; populateGoalFields('gain'); });
+  document.getElementById('gModeLose').addEventListener('click', function(){ settingsEditMode='lose'; populateGoalFields('lose'); });
+
+  document.getElementById('settingsBtn').addEventListener('click', function(){
+    settingsEditMode = state.mode;
+    populateGoalFields(settingsEditMode);
+    document.getElementById('goalsOverlay').classList.add('show');
+  });
+  document.getElementById('gCancelBtn').addEventListener('click', function(){ document.getElementById('goalsOverlay').classList.remove('show'); });
+  document.getElementById('gSaveBtn').addEventListener('click', async function(){
+    var fallback = settingsEditMode === 'lose' ? DEFAULT_LOSE_GOALS : DEFAULT_GAIN_GOALS;
+    var g = {
+      calories: parseFloat(document.getElementById('gCal').value)||fallback.calories,
+      protein: parseFloat(document.getElementById('gProtein').value)||fallback.protein,
+      carbs: parseFloat(document.getElementById('gCarbs').value)||fallback.carbs,
+      fat: parseFloat(document.getElementById('gFat').value)||fallback.fat,
+      fiber: parseFloat(document.getElementById('gFiber').value)||fallback.fiber
+    };
+    var stepsGoalVal = parseInt(document.getElementById('gSteps').value, 10) || DEFAULT_STEPS_GOAL;
+    var docName = settingsEditMode === 'lose' ? "settings/goalsLose" : "settings/goalsGain";
+    if(db){
+      try{
+        await db.doc(docName).set(g);
+        await db.doc("settings/stepsGoal").set({goal: stepsGoalVal});
+        showToast("Goals saved.");
+      }
+      catch(e){ showToast("Couldn't save goals — try again."); }
+    } else {
+      state.goalsByMode[settingsEditMode] = g;
+      state.stepsGoal = stepsGoalVal;
+      renderGoalsIntoUI(); renderSummary();
+      showToast("Goals updated (not saved — storage unavailable here).");
+    }
+    document.getElementById('goalsOverlay').classList.remove('show');
+  });
+
+  /* close overlays on backdrop tap */
+  [['qtyOverlay'],['customOverlay'],['goalsOverlay'],['guideOverlay'],['avoidOverlay'],['prayerSettingsOverlay'],['studyOverlay'],['gymOverlay']].forEach(function(pair){
+    var el=document.getElementById(pair[0]);
+    el.addEventListener('click', function(ev){ if(ev.target===el) el.classList.remove('show'); });
+  });
+
+  function renderGuideLists(){
+    var eatEl = document.getElementById('eatMoreList');
+    var limitEl = document.getElementById('limitList');
+    eatEl.innerHTML = EAT_MORE_FOODS.map(function(f){ return "✅ "+f; }).join("<br>");
+    limitEl.innerHTML = LIMIT_FOODS.map(function(f){ return "⚠️ "+f; }).join("<br>");
+  }
+
+  /* ---------------- Boot ---------------- */
+  renderGoalsIntoUI();
+  renderGuideLists();
+  updateModeUI();
+  renderFoodList();
+  renderSummary();
+  renderPrayer();
+  renderStudy();
+  renderGym();
+  renderAvoidList();
+  initDb();
+  initSampler();
+})();
+</script>
+</body>
+</html>
